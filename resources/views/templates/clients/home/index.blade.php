@@ -442,191 +442,75 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="tabs">
-
-                        <div class="tab-item">
+                        @if($danhmuc)
+                        @foreach($danhmuc as $key => $value)
+                        <div class="tab-item {{$key == 0 ? 'active' : ''}}">
                             <div class="item">
                                 <div class="woo_category_box border_style rounded">
                                     <div class="woo_cat_thumb">
-                                        <a href="javascript:"><img src="{{ asset('uploads/categories/thuong-thuc-tai-nha33.png')}}" class="img-fluid" alt="" /></a>
+                                        <a href="javascript:">
+                                            <img src="{{ asset('uploads/categories/'.$value->hinhanh)}}" class="img-fluid" alt="" /></a>
                                     </div>
                                     <div class="woo_cat_caption">
-                                        <h4><a href="javascript:" class="bold">tên loại</a></h4>
+                                        <h4><a href="javascript:" class="bold">{{$value->tenloai}}</a></h4>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-item">
-                            <div class="item">
-                                <div class="woo_category_box border_style rounded">
-                                    <div class="woo_cat_thumb">
-                                        <a href="javascript:"><img src="{{ asset('uploads/categories/thuong-thuc-tai-nha33.png')}}" class="img-fluid" alt="" /></a>
-                                    </div>
-                                    <div class="woo_cat_caption">
-                                        <h4><a href="javascript:" class="bold">tên loại</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-item">
-                            <div class="item">
-                                <div class="woo_category_box border_style rounded">
-                                    <div class="woo_cat_thumb">
-                                        <a href="javascript:"><img src="{{ asset('uploads/categories/thuong-thuc-tai-nha33.png')}}" class="img-fluid" alt="" /></a>
-                                    </div>
-                                    <div class="woo_cat_caption">
-                                        <h4><a href="javascript:" class="bold">tên loại</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-item">
-                            <div class="item">
-                                <div class="woo_category_box border_style rounded">
-                                    <div class="woo_cat_thumb">
-                                        <a href="javascript:"><img src="{{ asset('uploads/categories/thuong-thuc-tai-nha33.png')}}" class="img-fluid" alt="" /></a>
-                                    </div>
-                                    <div class="woo_cat_caption">
-                                        <h4><a href="javascript:" class="bold">tên loại</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
+                        @endif
                     </div>
                     <div class="content">
-                        <div class="tab-pane active">
+                        @if($danhmuc)
+                        @foreach($danhmuc as $key => $value)
+                        <div class="tab-pane {{$key == 0 ? 'active' : ''}}">
                             <div class="list-product">
+                                @if($product)
+                                @foreach($product as $val)
+                                @if ($val->id_loaisanpham == $value->id)
                                 <div class="item">
                                     <div class="woo_product_grid">
                                         <span class="woo_offer_sell">
-                                            30%
+                                            0%
                                         </span>
                                         <div class="woo_product_thumb">
-                                            <img src="{{ asset('uploads/product/1657251006.jpg')}}" class="img-fluid" alt="" />
+                                            <img src="{{ asset('uploads/product/'.$val->hinhanh)}}" class="img-fluid" alt="" />
                                         </div>
                                         <div class="woo_product_caption center">
                                             <div class="woo_title">
-                                                <h4 class="woo_pro_title"><a href="">Tên SP</a></h4>
+                                                <h4 class="woo_pro_title"><a href="">{{$val->tensp}}</a></h4>
                                             </div>
                                             <div class="woo_price ">
                                                 <h6>
+
                                                     <span class="less_price">
-                                                        30000đ
+
+                                                        {{ $val->giaban }}
                                                     </span>
-                                                    20000đ
+
+                                                    {{$val->giaban}}
+
                                                 </h6>
                                                 <a href="javascript:" class="btn-plus quickView" data-id=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="woo_product_grid">
-                                        <span class="woo_offer_sell">
-                                            30%
-                                        </span>
-                                        <div class="woo_product_thumb">
-                                            <img src="{{ asset('uploads/product/1657251006.jpg')}}" class="img-fluid" alt="" />
-                                        </div>
-                                        <div class="woo_product_caption center">
-                                            <div class="woo_title">
-                                                <h4 class="woo_pro_title"><a href="">Tên SP</a></h4>
-                                            </div>
-                                            <div class="woo_price ">
-                                                <h6>
-                                                    <span class="less_price">
-                                                        30000đ
-                                                    </span>
-                                                    20000đ
-                                                </h6>
-                                                <a href="javascript:" class="btn-plus quickView" data-id=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="woo_product_grid">
-                                        <span class="woo_offer_sell">
-                                            30%
-                                        </span>
-                                        <div class="woo_product_thumb">
-                                            <img src="{{ asset('uploads/product/1657251006.jpg')}}" class="img-fluid" alt="" />
-                                        </div>
-                                        <div class="woo_product_caption center">
-                                            <div class="woo_title">
-                                                <h4 class="woo_pro_title"><a href="">Tên SP</a></h4>
-                                            </div>
-                                            <div class="woo_price ">
-                                                <h6>
-                                                    <span class="less_price">
-                                                        30000đ
-                                                    </span>
-                                                    20000đ
-                                                </h6>
-                                                <a href="javascript:" class="btn-plus quickView" data-id=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="woo_product_grid">
-                                        <span class="woo_offer_sell">
-                                            30%
-                                        </span>
-                                        <div class="woo_product_thumb">
-                                            <img src="{{ asset('uploads/product/1657251006.jpg')}}" class="img-fluid" alt="" />
-                                        </div>
-                                        <div class="woo_product_caption center">
-                                            <div class="woo_title">
-                                                <h4 class="woo_pro_title"><a href="">Tên SP</a></h4>
-                                            </div>
-                                            <div class="woo_price ">
-                                                <h6>
-                                                    <span class="less_price">
-                                                        30000đ
-                                                    </span>
-                                                    20000đ
-                                                </h6>
-                                                <a href="javascript:" class="btn-plus quickView" data-id=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="woo_product_grid">
-                                        <span class="woo_offer_sell">
-                                            30%
-                                        </span>
-                                        <div class="woo_product_thumb">
-                                            <img src="{{ asset('uploads/product/1657251006.jpg')}}" class="img-fluid" alt="" />
-                                        </div>
-                                        <div class="woo_product_caption center">
-                                            <div class="woo_title">
-                                                <h4 class="woo_pro_title"><a href="">Tên SP</a></h4>
-                                            </div>
-                                            <div class="woo_price ">
-                                                <h6>
-                                                    <span class="less_price">
-                                                        30000đ
-                                                    </span>
-                                                    20000đ
-                                                </h6>
-                                                <a href="javascript:" class="btn-plus quickView" data-id=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endif
+                                @endforeach
+                                @endif
                             </div>
                         </div>
 
-
+                        @endforeach
+                        @endif
 
                     </div>
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="sec-heading-flex-last">
-                    <a href="" class="btn btn-theme">Xem tất cả <i class="fas fa-arrow-right mgl-5"> </i></a>
+                    <a href="{{ route('product')}}" class="btn btn-theme">Xem tất cả <i class="fas fa-arrow-right mgl-5"> </i></a>
                 </div>
             </div>
         </div>
