@@ -85,12 +85,6 @@
 
 
         @include('templates.clients.layouts.footer')
-
-        <script src="https://sp.zalo.me/plugins/sdk.js"></script>
-        <div class="zalo-chat-widget" data-oaid="22237114426800699" data-welcome-message="Rất vui khi được hỗ trợ bạn!"
-            style="z-index: 9999; right: 10px;" data-autopopup="0" data-width="" data-height=""></div>
-
-
         <script>
         function openRightMenu() {
             document.getElementById("rightMenu").style.display = "block";
@@ -100,7 +94,8 @@
             document.getElementById("rightMenu").style.display = "none";
         }
         </script>
-
+        @include('templates.clients.js.js')
+        @include('templates.clients.js.notification')
     </body>
 
 </html>

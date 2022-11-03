@@ -51,7 +51,7 @@
                             <div class="nav-menus-wrapper" style="transition-property: none;">
                                 <ul class="nav-menu">
 
-                                    <li class=""><a href="">Đặt hàng<span class="submenu-indicator"></span></a>
+                                    <li class=""><a href="{{ route('product')}}">Đặt hàng<span class="submenu-indicator"></span></a>
                                     </li>
 
                                     <li><a href="">Tin tức<span class="submenu-indicator"></span></a>
