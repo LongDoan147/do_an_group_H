@@ -87,7 +87,7 @@
                 <td>{{ $i++ }}</td>
                 <td>{{ $sp->tensp }}</td>
                 <td>{{ $sp->giaban}}</td>
-                <td><img style=" widtd: 100px;height:150px" src="{{ asset('uploads/product/' . $sp->hinhanh) }}">
+                <td><img style=" max-width: 100px; max-height:150px" src="{{ asset('uploads/product/' . $sp->hinhanh) }}">
                 </td>
                 <td>
                 @foreach ($sp->size as $value)
@@ -105,7 +105,7 @@
                 <td id="contenpro"><span class="line-5">{{ $sp->noidung }}</span></td>
                 <td>
                     <a href="{{ route('products.del', $sp->id) }}"><i class="material-icons" style="font-size:24px;color:red">delete</i></a>
-                    <a href=""><i class="fa fa-edit" style="font-size:24px;color:green"></i></a>
+                    <a href="{{ route('products.editview', $sp->slug) }}"><i class="fa fa-edit" style="font-size:24px;color:green"></i></a>
                 </td>
             </tr>
             @endforeach

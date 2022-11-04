@@ -103,4 +103,59 @@ class ProductControllers extends Controller
         return redirect()->back();
     }
 
+    public function editProductView($slug)
+    {
+        $catetype = Categories::all();
+        $spham = Products::where('slug', $slug)->first();
+        return view('admin_pages.products.edit', compact('spham', 'catetype'));
+    }
+
+    //update product
+    public function updateProduct(Request $req)
+    {
+        $req->validate([
+            'ten_spham' => 'required|max:255',
+            'giaban' => 'required|integer|min:0',
+            'conten_edit' => 'required',
+            'description_edit' => 'required'
+        ]);
+
+        $editProduct = Products::find($req->id);
+        $editProduct->tensp = $req->ten_spham;
+        $editProduct->giaban = $req->giaban;
+        $editProduct->mota = $req->description_edit;
+        $editProduct->noidung = $req->conten_edit;
+        $editProduct->id_loaisanpham = $req->select_cat;
+        $editProduct->trangthai = $req->status_product;
+
+        if ($req->ProductImage != null) {
+            $imageName = $this->uploadImage($req);
+        } else {
+            $imageName = $req->imageOld;
+        }
+
+        $editProduct->hinhanh = $imageName;
+        session()->put('success_edit_pro', true);
+        $editProduct->save();
+        return redirect('admin/san-pham');
+    }
+
+    public function updateStatus(Request $req)
+    {
+        $getData = Products::find($req->id);
+        $statusP = $getData->trangthai;
+        $newStatus = 0;
+        if (+$statusP === 1) {
+            $newStatus = 0;
+        } else {
+            $newStatus = 1;
+        }
+        $getData->trangthai = $newStatus;
+        $getData->save();
+        return response()->json([
+            "data" => $req->id,
+        ]);
+    }
+
+
 }

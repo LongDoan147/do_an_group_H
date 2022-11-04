@@ -5,7 +5,7 @@
     </div>
     {{ Breadcrumbs::render('Thêm sản phẩm') }}
     <div class="content-add showind">
-        <form action="" method="post" id="form-add-material" enctype="multipart/form-data">
+        <form action="{{ route('products.addhandle') }}" method="post" id="form-add-material" enctype="multipart/form-data">
             @csrf
             <div class="form-add-material-l">
                 <div class="form-group">
