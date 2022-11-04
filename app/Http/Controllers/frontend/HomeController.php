@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Categories;
+use App\Models\Posts;
 
 class HomeController extends Controller
 {
@@ -14,9 +15,17 @@ class HomeController extends Controller
         $product = Products::where('trangthai', 1)->get();
         $danhmuc = Categories::where('trangthai', 1)->get();
 
+         //bài viết
+         $posts = Posts::where('trangthai', 1)
+         ->where('hot', 1)
+         ->orderBy('id')
+         ->limit(4)
+         ->get();
+
         $viewData = [
             'product' => $product,
             'danhmuc' => $danhmuc,
+            'baiviet' => $posts,
         ];
         return view('templates.clients.home.index', $viewData);
     }
