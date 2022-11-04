@@ -32,4 +32,5 @@ Route::get('/', [HomeController::class, 'index'])->name('get.home');
 
 //products
 Route::get('products',  [ProductController::class, 'index'])->name('product');
-
+Route::get('admin/them-san-pham', [ProductControllers::class, 'addProductView'])->name('products.addview');
+Route::post('admin/them-san-pham', [ProductControllers::class, 'addProductHandle'])->name('products.addhandle');

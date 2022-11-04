@@ -56,7 +56,7 @@
 </div>
 
 <div class="add-material">
-    <a href="" class="btn btn-success">THÊM SẢN PHẨM</a>
+    <a href="{{ route('products.addview') }}" class="btn btn-success">THÊM SẢN PHẨM</a>
     <div class="form-search-mal">
         <form action="" method="post">
             @csrf
