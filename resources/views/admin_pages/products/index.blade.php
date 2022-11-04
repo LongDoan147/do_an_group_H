@@ -90,7 +90,7 @@
                 <td><img style=" max-width: 100px; max-height:150px" src="{{ asset('uploads/product/' . $sp->hinhanh) }}">
                 </td>
                 <td>
-                @foreach ($sp->size as $value)
+                    @foreach ($sp->size as $value)
                     {{ $value->size_name }}
                     @endforeach
                 </td>
