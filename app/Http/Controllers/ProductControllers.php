@@ -89,4 +89,18 @@ class ProductControllers extends Controller
         return $imageName;
     }
 
+    public function deleteProduct($id)
+    {
+        $delProduct = Products::where('id', $id)->first();
+        $image_path = "uploads/product/" . $delProduct->hinh_anh;
+        if (file_exists($image_path)) {
+            @unlink(public_path($image_path));
+        }
+
+        $delProduct->size()->detach([1, 3]);
+        $delProduct->delete();
+        session()->put('success_del_pro', true);
+        return redirect()->back();
+    }
+
 }

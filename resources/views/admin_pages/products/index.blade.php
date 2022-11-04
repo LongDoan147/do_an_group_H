@@ -104,7 +104,7 @@
                 <td><span class="line-5">{{ $sp->mota }}</span></td>
                 <td id="contenpro"><span class="line-5">{{ $sp->noidung }}</span></td>
                 <td>
-                    <a href=""><i class="material-icons" style="font-size:24px;color:red">delete</i></a>
+                    <a href="{{ route('products.del', $sp->id) }}"><i class="material-icons" style="font-size:24px;color:red">delete</i></a>
                     <a href=""><i class="fa fa-edit" style="font-size:24px;color:green"></i></a>
                 </td>
             </tr>
