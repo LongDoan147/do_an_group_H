@@ -15,4 +15,14 @@ class Products extends Model
     {
         return $this->belongsTo(Categories::class, 'id_loaisanpham');
     }
+
+    public function size()
+    {
+        return $this->belongsToMany(Sizes::class, 'size_pros', 'id_pro', 'id_size');
+    }
+
+    public function sizes()
+    {
+        return $this->belongsToMany(Sizes::class);
+    }
 }

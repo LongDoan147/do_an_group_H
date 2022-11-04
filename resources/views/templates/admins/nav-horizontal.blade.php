@@ -20,7 +20,7 @@
                         src="{{asset('img/v2.png')}}">
                     <button class="btn btn-secondary dropdown-toggle-menu" type="button" id="dropdownMenuButton1"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      ádsad
+
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="">
