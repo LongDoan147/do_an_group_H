@@ -66,7 +66,7 @@
 
 
                     <li class="sidebar-item" value="product">
-                        <a class="sidebar-link" href="">
+                        <a class="sidebar-link" href="{{ route('products.show') }}">
                             <i class="align-middle" data-feather="user"></i>
                             <span class="align-middle">Sản phẩm</span>
                         </a>

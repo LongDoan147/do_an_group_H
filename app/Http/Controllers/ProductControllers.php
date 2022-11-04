@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products;
+use App\Models\Sizes;
 
-class ProductController extends Controller
+class ProductControllers extends Controller
 {
     public function show()
     {
