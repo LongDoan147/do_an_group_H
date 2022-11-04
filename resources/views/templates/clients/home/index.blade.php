@@ -485,7 +485,7 @@
 
                                                     <span class="less_price">
 
-                                                        {{ $val->giaban }}
+                                                        {{$val->giaban }}
                                                     </span>
 
                                                     {{$val->giaban}}
@@ -523,59 +523,40 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="sec-heading-flex ">
                     <div class="sec-heading-flex-one">
-                        <h2>Tin tức</h2>
+                        <h2>Tin tức </h2>
                     </div>
 
                 </div>
             </div>
         </div>
         <div class="row">
-
+            @if($product)
+            @foreach($baiviet as $value)
             <div class="col-12 col-sm-6 col-lg-3 mb-3">
                 <!-- Single Item -->
                 <div class="item">
                     <div class="offer_item">
                         <div class="offer_item_thumb">
                             <div class="offer-overlay"></div>
-                            <img src="{{ asset('uploads/post/6967645.jpg') }}" alt="">
+                            <img src="{{ asset('uploads/post/'.$value->hinhanh) }}" alt="">
                             <div class="offer_bottom_caption">
-                                <div class="offer_title">Tiêu đề</div>
+                                <div class="offer_title">{{ $value->tieude}}</div>
                             </div>
                         </div>
 
                         <div class="offer_caption">
-                            <a href="" class="btn offer_box_btn">Đọc tiếp</a>
+                            <a href="" class="btn offer_box_btn">Đọc tiếp </a>
                         </div>
                     </div>
 
                 </div>
-
             </div>
-            <div class="col-12 col-sm-6 col-lg-3 mb-3">
-                <!-- Single Item -->
-                <div class="item">
-                    <div class="offer_item">
-                        <div class="offer_item_thumb">
-                            <div class="offer-overlay"></div>
-                            <img src="{{ asset('uploads/post/6967645.jpg') }}" alt="">
-                            <div class="offer_bottom_caption">
-                                <div class="offer_title">Tiêu đề</div>
-                            </div>
-                        </div>
-
-                        <div class="offer_caption">
-                            <a href="" class="btn offer_box_btn">Đọc tiếp</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
+            @endforeach
+            @endif
         </div>
         <div class="row d-flex justify-content-center">
             <div class="sec-heading-flex-last">
-                <a href="" class="btn btn-theme">Xem tất cả <i class="fas fa-arrow-right mgl-5"></i></a>
+                <a href="{{ route('get.posts')}}" class="btn btn-theme">Xem tất cả <i class="fas fa-arrow-right mgl-5"></i></a>
             </div>
         </div>
     </div>
