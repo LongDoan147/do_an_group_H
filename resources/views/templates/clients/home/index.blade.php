@@ -282,7 +282,8 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="owl-carousel products-slider owl-theme owl-loaded owl-drag">
-
+                @if($productnew)
+                    @foreach($productnew as $value)
                     <!-- Single Item -->
                     <div class="item">
                         <div class="woo_product_grid">
@@ -293,132 +294,27 @@
                             </span>
 
                             <div class="woo_product_thumb">
-                                <img src="{{ asset('uploads/slide/6863503.jpg') }}" class="img-fluid" alt="" />
+                                <img src="{{ asset('uploads/product/'.$value->hinhanh)}}" class="img-fluid" alt="" />
                             </div>
                             <div class="woo_product_caption center">
                                 <div class="woo_title">
-                                    <h4 class="woo_pro_title"><a href="">tên sản phẩm</a></h4>
+                                    <h4 class="woo_pro_title"><a href="">{{$value->tensp}}</a></h4>
                                 </div>
                                 <div class="woo_price ">
                                     <h6>
                                         <span class="less_price">
-                                            30000đ
+                                        {{$value->giaban}}
                                         </span>
                                     </h6>
+                                    {{$value->giaban}}
                                     <a href="javascript:" class="btn-plus quickView" data-id=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="woo_product_grid">
-                            <span class="woo_pr_tag hot">Mới</span>
-
-                            <span class="woo_offer_sell">
-                                20%
-                            </span>
-
-                            <div class="woo_product_thumb">
-                                <img src="{{ asset('uploads/slide/6863503.jpg') }}" class="img-fluid" alt="" />
-                            </div>
-                            <div class="woo_product_caption center">
-                                <div class="woo_title">
-                                    <h4 class="woo_pro_title"><a href="">tên sản phẩm</a></h4>
-                                </div>
-                                <div class="woo_price ">
-                                    <h6>
-                                        <span class="less_price">
-                                            30000đ
-                                        </span>
-                                    </h6>
-                                    <a href="javascript:" class="btn-plus quickView" data-id=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="woo_product_grid">
-                            <span class="woo_pr_tag hot">Mới</span>
-
-                            <span class="woo_offer_sell">
-                                20%
-                            </span>
-
-                            <div class="woo_product_thumb">
-                                <img src="{{ asset('uploads/slide/6863503.jpg') }}" class="img-fluid" alt="" />
-                            </div>
-                            <div class="woo_product_caption center">
-                                <div class="woo_title">
-                                    <h4 class="woo_pro_title"><a href="">tên sản phẩm</a></h4>
-                                </div>
-                                <div class="woo_price ">
-                                    <h6>
-                                        <span class="less_price">
-                                            30000đ
-                                        </span>
-                                    </h6>
-                                    <a href="javascript:" class="btn-plus quickView" data-id=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="woo_product_grid">
-                            <span class="woo_pr_tag hot">Mới</span>
-
-                            <span class="woo_offer_sell">
-                                20%
-                            </span>
-
-                            <div class="woo_product_thumb">
-                                <img src="{{ asset('uploads/slide/6863503.jpg') }}" class="img-fluid" alt="" />
-                            </div>
-                            <div class="woo_product_caption center">
-                                <div class="woo_title">
-                                    <h4 class="woo_pro_title"><a href="">tên sản phẩm</a></h4>
-                                </div>
-                                <div class="woo_price ">
-                                    <h6>
-                                        <span class="less_price">
-                                            30000đ
-                                        </span>
-                                    </h6>
-                                    <a href="javascript:" class="btn-plus quickView" data-id=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="woo_product_grid">
-                            <span class="woo_pr_tag hot">Mới</span>
-
-                            <span class="woo_offer_sell">
-                                20%
-                            </span>
-
-                            <div class="woo_product_thumb">
-                                <img src="{{ asset('uploads/slide/6863503.jpg') }}" class="img-fluid" alt="" />
-                            </div>
-                            <div class="woo_product_caption center">
-                                <div class="woo_title">
-                                    <h4 class="woo_pro_title"><a href="">tên sản phẩm</a></h4>
-                                </div>
-                                <div class="woo_price ">
-                                    <h6>
-                                        <span class="less_price">
-                                            30000đ
-                                        </span>
-                                    </h6>
-                                    <a href="javascript:" class="btn-plus quickView" data-id=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    @endforeach
+                    @endif
                 </div>
             </div>
         </div>
