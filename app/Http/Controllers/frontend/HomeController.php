@@ -15,15 +15,22 @@ class HomeController extends Controller
         $product = Products::where('trangthai', 1)->get();
         $danhmuc = Categories::where('trangthai', 1)->get();
 
-         //bài viết
-         $posts = Posts::where('trangthai', 1)
-         ->where('hot', 1)
-         ->orderBy('id')
-         ->limit(4)
-         ->get();
+        //sản phẩm mới
+        $productnew = Products::where('trangthai', 1)
+            ->orderBy('id', 'desc')
+            ->limit(8)
+            ->get();
+
+        //bài viết
+        $posts = Posts::where('trangthai', 1)
+            ->where('hot', 1)
+            ->orderBy('id')
+            ->limit(4)
+            ->get();
 
         $viewData = [
             'product' => $product,
+            'productnew' => $productnew,
             'danhmuc' => $danhmuc,
             'baiviet' => $posts,
         ];
