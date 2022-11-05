@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductControllers;
+use App\Http\Controllers\PostsControllers;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\PostsController;
@@ -27,6 +28,24 @@ Route::get('/admin', [DashboardController::class, 'show'])->name('showDashboard'
 // Product admin
 Route::get('admin/san-pham', [ProductControllers::class, 'show'])->name('products.show');
 
+// loai tin tức trang admin
+// all
+Route::get('typepost', [PostsControllers::class, 'getTypePost'])->name('get.typepost'); //show all menu posts
+
+//add menu posts
+Route::get('create-menupost', [PostsControllers::class, 'createMenuPost'])->name('create.menupost'); //add new menu posts
+Route::post('save-menupost', [PostsControllers::class, 'saveMenuPost'])->name('save.menupost'); //save add new menu posts
+
+//delete
+Route::get('delete-menupost/{id}', [PostsControllers::class, 'deleteMenuPost'])->name('delete.menupost'); //delete menu posts
+
+//edit
+Route::get('edit-menupost/{id}', [PostsControllers::class, 'editMenuPost'])->name('edit.menupost'); //edit menu posts
+Route::post('save-edit-menupost/{id}', [PostsControllers::class, 'saveeditMenuPost'])->name('save.edit.menupost'); //save edit menu posts
+
+//active
+Route::get('active-menupost/{id}', [PostsControllers::class, 'activeMenuPost'])->name('active.menupost'); //active menu posts
+
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
 //Route::post('/quickview', 'HomeController@quickView')->name('quickview');
@@ -42,3 +61,5 @@ Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateSta
 
 //tin tức
 Route::get('posts',  [PostsController::class, 'index'])->name('get.posts');
+
+

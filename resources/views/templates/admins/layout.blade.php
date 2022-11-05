@@ -105,7 +105,7 @@
                     </li>
                     <li class="sidebar-item list_order">
 
-                        <a class="sidebar-link" href=" ">
+                        <a class="sidebar-link" href="{{ route('get.typepost') }}">
                             <i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
                             <span class="align-middle">Loại tin tức</span>
                         </a>
