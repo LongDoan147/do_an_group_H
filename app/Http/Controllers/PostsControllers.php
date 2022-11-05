@@ -6,6 +6,7 @@ use App\Http\Requests\RequestPost;
 use Illuminate\Http\Request;
 use App\Models\MenuPosts;
 use Illuminate\Support\Str;
+use App\Models\Posts;
 
 class PostsControllers extends Controller
 {
@@ -37,5 +38,15 @@ class PostsControllers extends Controller
         } else {
             return redirect()->route('get.typepost')->with('message', 'Thêm loại bài viết thất bại.');
         }
+    }
+
+    public function deleteMenuPost($id)
+    {
+        $menuPost = MenuPosts::find($id);
+        if (count(Posts::where('id_danhmuc', $menuPost->id)->get()) > 0) {
+            return redirect()->back()->with('message', 'Danh mục đang tồn tại bài viết.');
+        }
+        $menuPost->delete();
+        return redirect()->back()->with('message', 'Đã xoá thành công.');
     }
 }

@@ -29,12 +29,15 @@ Route::get('/admin', [DashboardController::class, 'show'])->name('showDashboard'
 Route::get('admin/san-pham', [ProductControllers::class, 'show'])->name('products.show');
 
 // loai tin tức trang admin
-//all
+// all
 Route::get('typepost', [PostsControllers::class, 'getTypePost'])->name('get.typepost'); //show all menu posts
 
 //add menu posts
 Route::get('create-menupost', [PostsControllers::class, 'createMenuPost'])->name('create.menupost'); //add new menu posts
 Route::post('save-menupost', [PostsControllers::class, 'saveMenuPost'])->name('save.menupost'); //save add new menu posts
+
+//delete
+Route::get('delete-menupost/{id}', [PostsControllers::class, 'deleteMenuPost'])->name('delete.menupost'); //delete menu posts
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');

@@ -58,7 +58,7 @@ window.addEventListener('load', (e) => {
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
 
-                            <a href="" class="btn btn-danger mgr-5" id="edit">
+                            <a href="{{ route('delete.menupost', $value->id)}}" class="btn btn-danger mgr-5" id="edit">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </td>
