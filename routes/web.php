@@ -39,6 +39,10 @@ Route::post('save-menupost', [PostsControllers::class, 'saveMenuPost'])->name('s
 //delete
 Route::get('delete-menupost/{id}', [PostsControllers::class, 'deleteMenuPost'])->name('delete.menupost'); //delete menu posts
 
+//edit
+Route::get('edit-menupost/{id}', [PostsControllers::class, 'editMenuPost'])->name('edit.menupost'); //edit menu posts
+Route::post('save-edit-menupost/{id}', [PostsControllers::class, 'saveeditMenuPost'])->name('save.edit.menupost'); //save edit menu posts
+
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
 //Route::post('/quickview', 'HomeController@quickView')->name('quickview');

@@ -49,4 +49,31 @@ class PostsControllers extends Controller
         $menuPost->delete();
         return redirect()->back()->with('message', 'Đã xoá thành công.');
     }
+
+    public function editMenuPost($id)
+    {
+        $menuPost = MenuPosts::find($id);
+        $viewData = [
+            'menuPost' => $menuPost,
+        ];
+        if ($menuPost->id) {
+            return view('admin_pages.posts.editMenuPost', $viewData);
+        }
+        return redirect()->back();
+    }
+
+    public function saveEditMenuPost($id, Request $request)
+    {
+        $request->validate([
+            'tenloai' => 'required',
+        ], [
+            'tenloai.required' => "Tiêu đề không để trống.",
+        ]);
+        $menuPost = MenuPosts::find($id);
+        $menuPost->tendanhmuc = $request->tenloai;
+        $menuPost->mota = $request->mota;
+        $menuPost->slug = Str::slug($request->tenloai, '-');
+        $menuPost->save();
+        return redirect()->route('get.typepost')->with('message', 'Đã cập nhật thành công.');
+    }
 }
