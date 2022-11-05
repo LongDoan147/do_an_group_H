@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductControllers;
+use App\Http\Controllers\PostsControllers;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\PostsController;
@@ -27,6 +28,9 @@ Route::get('/admin', [DashboardController::class, 'show'])->name('showDashboard'
 // Product admin
 Route::get('admin/san-pham', [ProductControllers::class, 'show'])->name('products.show');
 
+// loai tin tức trang admin
+Route::get('typepost', [PostsControllers::class, 'getTypePost'])->name('get.typepost');
+
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
 //Route::post('/quickview', 'HomeController@quickView')->name('quickview');
@@ -42,3 +46,5 @@ Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateSta
 
 //tin tức
 Route::get('posts',  [PostsController::class, 'index'])->name('get.posts');
+
+
