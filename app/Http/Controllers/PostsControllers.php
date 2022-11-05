@@ -76,4 +76,12 @@ class PostsControllers extends Controller
         $menuPost->save();
         return redirect()->route('get.typepost')->with('message', 'Đã cập nhật thành công.');
     }
+
+    public function activeMenuPost($id)
+    {
+        $menuPost = MenuPosts::find($id);
+        $menuPost->trangthai = +!$menuPost->trangthai;
+        $menuPost->save();
+        return redirect()->back()->with('message', 'Đã cập nhật thành công.');
+    }
 }
