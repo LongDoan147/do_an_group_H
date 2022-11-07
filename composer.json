@@ -34,13 +34,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "files": [
-            "helpers/create_id.php",
-            "helpers/checkinput.php",
-            "helpers/convert_Vi_En.php",
-            "helpers/autoload.php"
-        ]
+        }
+
     },
     "autoload-dev": {
         "psr-4": {
