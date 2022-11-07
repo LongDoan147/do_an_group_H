@@ -53,6 +53,8 @@ Route::get('delete-post/{id}', [PostsControllers::class, 'deletePost'])->name('d
 //edit
 Route::get('edit-post/{id}', [PostsControllers::class, 'editPost'])->name('edit.post'); //edit news posts
 Route::post('save-edit-post/{id}', [PostsControllers::class, 'saveeditPost'])->name('save.edit.post'); //save news posts
+//active
+Route::get('active-post/{id}', [PostsControllers::class, 'activePost'])->name('active.post');
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');

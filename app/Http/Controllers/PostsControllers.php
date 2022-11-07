@@ -171,4 +171,12 @@ class PostsControllers extends Controller
         $post->save();
         return redirect()->route('get.post')->with('message', 'Đã cập nhật.');
     }
+
+    public function activePost($id)
+    {
+        $Post = Posts::find($id);
+        $Post->trangthai = +!$Post->trangthai;
+        $Post->save();
+        return redirect()->back()->with('message', 'Đã cập nhật thành công.');
+    }
 }

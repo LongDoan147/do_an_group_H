@@ -69,13 +69,13 @@ window.addEventListener('load', (e) => {
                         </td>
                         <td>
                             @if(+$value->trangthai === 1 )
-                            <a href="">
+                            <a href="{{route('active.post', $value->id)}}">
                                 <div class=" badge badge-success">
                                     Hiển thị
                                 </div>
                             </a>
                             @else
-                            <a href="">
+                            <a href="{{route('active.post', $value->id)}}">
                                 <div class="badge badge-danger">
                                     Ẩn
                                 </div>
