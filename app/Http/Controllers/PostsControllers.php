@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\MenuPosts;
 use Illuminate\Support\Str;
 use App\Models\Posts;
+use App\Models\Comments;
 
 class PostsControllers extends Controller
 {
@@ -125,5 +126,13 @@ class PostsControllers extends Controller
         } else {
             return redirect()->back()->with('message', 'Thêm thất bại.');
         }
+    }
+
+    public function deletePost($id)
+    {
+        $post = Posts::find($id);
+        Comments::where('id_baiviet', $post->id)->delete();
+        $post->delete();
+        return redirect()->back()->with('message', 'Đã xoá.');
     }
 }

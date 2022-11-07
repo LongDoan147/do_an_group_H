@@ -48,6 +48,8 @@ Route::get('post', [PostsControllers::class, 'getPost'])->name('get.post'); //sh
 //add news posts:
 Route::get('create-post', [PostsControllers::class, 'createPost'])->name('create.post'); //add news posts
 Route::post('save-post', [PostsControllers::class, 'savePost'])->name('save.post'); //save news posts
+//delete
+Route::get('delete-post/{id}', [PostsControllers::class, 'deletePost'])->name('delete.post'); //delete new posts
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
