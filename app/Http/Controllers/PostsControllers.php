@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\MenuPosts;
 use Illuminate\Support\Str;
 use App\Models\Posts;
+use App\Models\Comments;
 
 class PostsControllers extends Controller
 {
@@ -82,6 +83,108 @@ class PostsControllers extends Controller
         $menuPost = MenuPosts::find($id);
         $menuPost->trangthai = +!$menuPost->trangthai;
         $menuPost->save();
+        return redirect()->back()->with('message', 'Đã cập nhật thành công.');
+    }
+
+
+    // tin tuc
+    public function getPost()
+    {
+        $post = Posts::where('loaibaiviet', 'tin-tuc')->orderBy('hot', 'desc')->paginate(10);
+        return view('admin_pages.posts.index', ['post' => $post]);
+    }
+
+    public function createPost()
+    {
+        $menuPost = MenuPosts::where('trangthai', 1)->get();
+        return view('admin_pages.posts.createPost', ['menuPost' => $menuPost]);
+    }
+
+    public function savePost(RequestPost $request)
+    {
+        $request->validate([
+            'hinhanh' => 'required',
+        ], [
+            'hinhanh.required' => "Hình ảnh không để trống.",
+        ]);
+        $data['tieude'] = $request->tieude;
+        $data['slug'] = Str::slug($request->tieude, '-');
+        $data['noidung'] = $request->noidung;
+        $data['trangthai'] = 1;
+        $data['hot'] = 0;
+        $data['id_danhmuc'] = $request->danhmuc;
+        $data['loaibaiviet'] = 'tin-tuc';
+        $img = $request->file('hinhanh');
+        if ($img) {
+            $newImage = rand(1, 9999999) . '.' . $img->getClientOriginalExtension();
+            $img->move('uploads/post', $newImage);
+            $data['hinhanh'] = $newImage;
+        }
+        $post = Posts::create($data);
+        if ($post) {
+            return redirect()->back()->with('message', 'Đã thêm tin tức thành công.');
+        } else {
+            return redirect()->back()->with('message', 'Thêm thất bại.');
+        }
+    }
+
+    public function deletePost($id)
+    {
+        $post = Posts::find($id);
+        Comments::where('id_baiviet', $post->id)->delete();
+        $post->delete();
+        return redirect()->back()->with('message', 'Đã xoá.');
+    }
+
+    public function editPost($id)
+    {
+
+        $Post = Posts::find($id);
+        $menuPost = MenuPosts::where('trangthai', 1)->get();
+        $viewData = [
+            'menuPost' => $menuPost,
+            'post' => $Post
+        ];
+        if ($Post->id) {
+            return view('admin_pages.posts.editPost', $viewData);
+        }
+        return redirect()->back();
+    }
+
+    public function saveEditPost($id, RequestPost $request)
+    {
+        $post = Posts::find($id);
+        $post['tieude'] = $request->tieude;
+        $post['slug'] = Str::slug($request->tieude, '-');
+        $post['noidung'] = $request->noidung;
+        $post['id_danhmuc'] = $request->danhmuc;
+        $img = $request->file('hinhanh');
+        if ($img) {
+            $newImage = rand(1, 9999999) . '.' . $img->getClientOriginalExtension();
+            $img->move('uploads/post', $newImage);
+            $urlImg =  'uploads/post/' . $post->hinhanh;
+            if (file_exists($urlImg)) {
+                unlink($urlImg);
+            }
+            $post['hinhanh'] = $newImage;
+        }
+        $post->save();
+        return redirect()->route('get.post')->with('message', 'Đã cập nhật.');
+    }
+
+    public function activePost($id)
+    {
+        $Post = Posts::find($id);
+        $Post->trangthai = +!$Post->trangthai;
+        $Post->save();
+        return redirect()->back()->with('message', 'Đã cập nhật thành công.');
+    }
+
+    public function hotPost($id)
+    {
+        $Post = Posts::find($id);
+        $Post->hot = +!$Post->hot;
+        $Post->save();
         return redirect()->back()->with('message', 'Đã cập nhật thành công.');
     }
 }
