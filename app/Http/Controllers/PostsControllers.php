@@ -92,4 +92,38 @@ class PostsControllers extends Controller
         $post = Posts::where('loaibaiviet', 'tin-tuc')->orderBy('hot', 'desc')->paginate(10);
         return view('admin_pages.posts.index', ['post' => $post]);
     }
+
+    public function createPost()
+    {
+        $menuPost = MenuPosts::where('trangthai', 1)->get();
+        return view('admin_pages.posts.createPost', ['menuPost' => $menuPost]);
+    }
+
+    public function savePost(RequestPost $request)
+    {
+        $request->validate([
+            'hinhanh' => 'required',
+        ], [
+            'hinhanh.required' => "Hình ảnh không để trống.",
+        ]);
+        $data['tieude'] = $request->tieude;
+        $data['slug'] = Str::slug($request->tieude, '-');
+        $data['noidung'] = $request->noidung;
+        $data['trangthai'] = 1;
+        $data['hot'] = 0;
+        $data['id_danhmuc'] = $request->danhmuc;
+        $data['loaibaiviet'] = 'tin-tuc';
+        $img = $request->file('hinhanh');
+        if ($img) {
+            $newImage = rand(1, 9999999) . '.' . $img->getClientOriginalExtension();
+            $img->move('uploads/post', $newImage);
+            $data['hinhanh'] = $newImage;
+        }
+        $post = Posts::create($data);
+        if ($post) {
+            return redirect()->back()->with('message', 'Đã thêm tin tức thành công.');
+        } else {
+            return redirect()->back()->with('message', 'Thêm thất bại.');
+        }
+    }
 }

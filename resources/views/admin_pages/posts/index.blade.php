@@ -12,7 +12,7 @@ window.addEventListener('load', (e) => {
         @csrf
         <div class="card_1">
             <h3 class="card-title">Tin tức</h3>
-            <a href=" " class="btn btn-primary">
+            <a href="{{ route('create.post')}}" class="btn btn-primary">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 Thêm mới
             </a>
