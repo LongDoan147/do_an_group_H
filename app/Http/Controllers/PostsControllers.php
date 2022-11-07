@@ -135,4 +135,40 @@ class PostsControllers extends Controller
         $post->delete();
         return redirect()->back()->with('message', 'Đã xoá.');
     }
+
+    public function editPost($id)
+    {
+
+        $Post = Posts::find($id);
+        $menuPost = MenuPosts::where('trangthai', 1)->get();
+        $viewData = [
+            'menuPost' => $menuPost,
+            'post' => $Post
+        ];
+        if ($Post->id) {
+            return view('admin_pages.posts.editPost', $viewData);
+        }
+        return redirect()->back();
+    }
+
+    public function saveEditPost($id, RequestPost $request)
+    {
+        $post = Posts::find($id);
+        $post['tieude'] = $request->tieude;
+        $post['slug'] = Str::slug($request->tieude, '-');
+        $post['noidung'] = $request->noidung;
+        $post['id_danhmuc'] = $request->danhmuc;
+        $img = $request->file('hinhanh');
+        if ($img) {
+            $newImage = rand(1, 9999999) . '.' . $img->getClientOriginalExtension();
+            $img->move('uploads/post', $newImage);
+            $urlImg =  'uploads/post/' . $post->hinhanh;
+            if (file_exists($urlImg)) {
+                unlink($urlImg);
+            }
+            $post['hinhanh'] = $newImage;
+        }
+        $post->save();
+        return redirect()->route('get.post')->with('message', 'Đã cập nhật.');
+    }
 }

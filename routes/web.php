@@ -50,6 +50,9 @@ Route::get('create-post', [PostsControllers::class, 'createPost'])->name('create
 Route::post('save-post', [PostsControllers::class, 'savePost'])->name('save.post'); //save news posts
 //delete
 Route::get('delete-post/{id}', [PostsControllers::class, 'deletePost'])->name('delete.post'); //delete new posts
+//edit
+Route::get('edit-post/{id}', [PostsControllers::class, 'editPost'])->name('edit.post'); //edit news posts
+Route::post('save-edit-post/{id}', [PostsControllers::class, 'saveeditPost'])->name('save.edit.post'); //save news posts
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');

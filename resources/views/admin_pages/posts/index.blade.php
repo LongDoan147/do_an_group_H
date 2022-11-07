@@ -84,7 +84,7 @@ window.addEventListener('load', (e) => {
                         </td>
                         <td>
 
-                            <a href="" class="btn btn-info mgr-5" id="edit">
+                            <a href="{{ route('edit.post', $value->id)}}" class="btn btn-info mgr-5" id="edit">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
 
