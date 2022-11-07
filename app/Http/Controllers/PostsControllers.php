@@ -84,4 +84,12 @@ class PostsControllers extends Controller
         $menuPost->save();
         return redirect()->back()->with('message', 'Đã cập nhật thành công.');
     }
+
+
+    // tin tuc
+    public function getPost()
+    {
+        $post = Posts::where('loaibaiviet', 'tin-tuc')->orderBy('hot', 'desc')->paginate(10);
+        return view('admin_pages.posts.index', ['post' => $post]);
+    }
 }

@@ -31,20 +31,20 @@ Route::get('admin/san-pham', [ProductControllers::class, 'show'])->name('product
 // loai tin tức trang admin
 // all
 Route::get('typepost', [PostsControllers::class, 'getTypePost'])->name('get.typepost'); //show all menu posts
-
 //add menu posts
 Route::get('create-menupost', [PostsControllers::class, 'createMenuPost'])->name('create.menupost'); //add new menu posts
 Route::post('save-menupost', [PostsControllers::class, 'saveMenuPost'])->name('save.menupost'); //save add new menu posts
-
 //delete
 Route::get('delete-menupost/{id}', [PostsControllers::class, 'deleteMenuPost'])->name('delete.menupost'); //delete menu posts
-
 //edit
 Route::get('edit-menupost/{id}', [PostsControllers::class, 'editMenuPost'])->name('edit.menupost'); //edit menu posts
 Route::post('save-edit-menupost/{id}', [PostsControllers::class, 'saveeditMenuPost'])->name('save.edit.menupost'); //save edit menu posts
-
 //active
 Route::get('active-menupost/{id}', [PostsControllers::class, 'activeMenuPost'])->name('active.menupost'); //active menu posts
+
+// Tin tức trang admin:
+// all
+Route::get('post', [PostsControllers::class, 'getPost'])->name('get.post'); //show all news post
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
