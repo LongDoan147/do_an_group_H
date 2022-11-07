@@ -179,4 +179,12 @@ class PostsControllers extends Controller
         $Post->save();
         return redirect()->back()->with('message', 'Đã cập nhật thành công.');
     }
+
+    public function hotPost($id)
+    {
+        $Post = Posts::find($id);
+        $Post->hot = +!$Post->hot;
+        $Post->save();
+        return redirect()->back()->with('message', 'Đã cập nhật thành công.');
+    }
 }

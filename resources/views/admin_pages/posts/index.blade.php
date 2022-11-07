@@ -53,13 +53,13 @@ window.addEventListener('load', (e) => {
                         <td>
 
                             @if(+$value->hot === 1 )
-                            <a href="">
+                            <a href="{{route('hot.post', $value->id)}}">
                                 <div class=" badge badge-success">
                                     Có
                                 </div>
                             </a>
                             @else
-                            <a href="">
+                            <a href="{{route('hot.post', $value->id)}}">
                                 <div class="badge badge-danger">
                                     Không
                                 </div>
