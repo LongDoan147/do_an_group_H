@@ -66,6 +66,7 @@ Route::post('admin/category-adds', [Categoriesontroller::class, 'addhandle'])->n
 Route::get('admin/category-del/{id}', [Categoriesontroller::class, 'deletecat'])->name('categories.del');
 Route::get('admin/category-edit/{slug}', [Categoriesontroller::class, 'edit'])->name('categories.editview');
 Route::post('admin/category-edit/{id}', [Categoriesontroller::class, 'update'])->name('categories.edithandle');
+Route::get('active-category/{id}', [Categoriesontroller::class, 'activeCategory'])->name('active.category');
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');

@@ -87,4 +87,11 @@ class Categoriesontroller extends Controller
         $getCat = Categories::all();
         return view('admin_pages.category.index', compact('getCat'));
     }
+    public function activeCategory($id)
+    {
+        $categori = Categories::find($id);
+        $categori->trangthai = +!$categori->trangthai;
+        $categori->save();
+        return redirect()->back()->with('message', 'Đã cập nhật thành công.');
+    }
 }
