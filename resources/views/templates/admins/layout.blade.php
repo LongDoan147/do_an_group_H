@@ -58,9 +58,9 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="">
+                        <a class="sidebar-link" href="{{ route('category.show') }}">
                             <i class="align-middle" data-feather="user"></i>
-                            <span class="align-middle">Loại sản phẩm</span>
+                            <span class="align-middle">Danh mục sản phẩm</span>
                         </a>
                     </li>
 

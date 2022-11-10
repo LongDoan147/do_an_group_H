@@ -7,6 +7,7 @@ use App\Http\Controllers\PostsControllers;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\PostsController;
+use App\Http\Controllers\Categoriesontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,8 +59,18 @@ Route::get('active-post/{id}', [PostsControllers::class, 'activePost'])->name('a
 //hot
 Route::get('hot-post/{id}', [PostsControllers::class, 'hotPost'])->name('hot.post'); //hot news posts
 
+//Admin category
+Route::get('admin/category', [Categoriesontroller::class, 'index'])->name('category.show');
+Route::get('admin/category-add', [Categoriesontroller::class, 'add'])->name('categories.addview');
+Route::post('admin/category-adds', [Categoriesontroller::class, 'addhandle'])->name('categories.addhandle');
+Route::get('admin/category-del/{id}', [Categoriesontroller::class, 'deletecat'])->name('categories.del');
+Route::get('admin/category-edit/{slug}', [Categoriesontroller::class, 'edit'])->name('categories.editview');
+Route::post('admin/category-edit/{id}', [Categoriesontroller::class, 'update'])->name('categories.edithandle');
+Route::get('active-category/{id}', [Categoriesontroller::class, 'activeCategory'])->name('active.category');
+
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
+
 //Route::post('/quickview', 'HomeController@quickView')->name('quickview');
 
 //products
