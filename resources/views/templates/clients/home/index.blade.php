@@ -21,70 +21,23 @@
                     <div class="owl-carousel category-slider owl-theme">
 
                         <!-- Single Item -->
+                        @if($danhmuc)
+                        @foreach($danhmuc as $value)
                         <div class="item cate">
                             <div class="woo_category_box border_style rounded slide-cate">
                                 <div class="woo_cat_thumb">
-                                    <a href=""><img src="{{ asset('uploads/categories/1656628638.jpg')}}" class="img-fluid" alt="" /></a>
+                                    <a href="{{ route('product')}}"><img
+                                            src="{{ asset('uploads/categories/'.$value->hinhanh)}}" class="img-fluid"
+                                            alt="" /></a>
                                 </div>
                                 <div class="woo_cat_caption">
-                                    <h4><a href=""></a>Cafe</h4>
+                                    <h4><a href="search-sidebar.html">{{$value->tenloai}}</a></h4>
                                 </div>
                             </div>
+                        </div>
+                        @endforeach
+                        @endif
 
-                        </div>
-                        <div class="item cate">
-                            <div class="woo_category_box border_style rounded slide-cate">
-                                <div class="woo_cat_thumb">
-                                    <a href=""><img src="{{ asset('uploads/categories/1656628638.jpg')}}" class="img-fluid" alt="" /></a>
-                                </div>
-                                <div class="woo_cat_caption">
-                                    <h4><a href=""></a>Cafe</h4>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item cate">
-                            <div class="woo_category_box border_style rounded slide-cate">
-                                <div class="woo_cat_thumb">
-                                    <a href=""><img src="{{ asset('uploads/categories/1656628638.jpg')}}" class="img-fluid" alt="" /></a>
-                                </div>
-                                <div class="woo_cat_caption">
-                                    <h4><a href=""></a>Cafe</h4>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item cate">
-                            <div class="woo_category_box border_style rounded slide-cate">
-                                <div class="woo_cat_thumb">
-                                    <a href=""><img src="{{ asset('uploads/categories/1656628638.jpg')}}" class="img-fluid" alt="" /></a>
-                                </div>
-                                <div class="woo_cat_caption">
-                                    <h4><a href=""></a>Cafe</h4>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item cate">
-                            <div class="woo_category_box border_style rounded slide-cate">
-                                <div class="woo_cat_thumb">
-                                    <a href=""><img src="{{ asset('uploads/categories/1656628638.jpg')}}" class="img-fluid" alt="" /></a>
-                                </div>
-                                <div class="woo_cat_caption">
-                                    <h4><a href=""></a>Cafe</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item cate">
-                            <div class="woo_category_box border_style rounded slide-cate">
-                                <div class="woo_cat_thumb">
-                                    <a href=""><img src="{{ asset('uploads/categories/1656628638.jpg')}}" class="img-fluid" alt="" /></a>
-                                </div>
-                                <div class="woo_cat_caption">
-                                    <h4><a href=""></a>Cafe</h4>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
