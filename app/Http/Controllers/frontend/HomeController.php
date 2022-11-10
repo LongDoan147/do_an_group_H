@@ -28,6 +28,10 @@ class HomeController extends Controller
             ->limit(4)
             ->get();
 
+        //Danh muc san pham
+
+        $danhmuc = Categories::where('trangthai', 1)->get();
+
         $viewData = [
             'product' => $product,
             'productnew' => $productnew,
