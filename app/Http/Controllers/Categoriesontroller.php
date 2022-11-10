@@ -64,4 +64,27 @@ class Categoriesontroller extends Controller
         $delCat->delete();
         return redirect('admin/category');
     }
+    // edit
+    public function edit($slug)
+    {
+        $editCat = Categories::where('slug', $slug)->first();
+        return view('admin_pages.category.edit', compact('editCat'));
+    }
+    //save edit
+    function update(Request $req)
+    {
+        $id = $req->id_cat;
+        $updateCat = Categories::where('id', $id)->first();
+        $nameImage = "";
+        $updateCat->tenloai = $req->categoryname_edit;
+        $updateCat->mota = $req->des_edit;
+        if ($req->categoryImage == null) {
+            $nameImage = $req->oldname;
+        }else{
+            $nameImage = $req->categoryImage;
+        }
+        $updateCat->save();
+        $getCat = Categories::all();
+        return view('admin_pages.category.index', compact('getCat'));
+    }
 }

@@ -33,7 +33,7 @@
                         <td>
                             <a href="{{ route('categories.del', $m->id) }}"><i class="fa fa-trash"
                                 style="width: 16px;height: 16px;color:red"></i></a>
-                            <a href=""><i class="fa fa-edit"
+                            <a href="{{ route('categories.editview', $m->slug) }}"><i class="fa fa-edit"
                                 style="width: 16px;height: 16px;color:green"></i></a>
                         </td>
 
