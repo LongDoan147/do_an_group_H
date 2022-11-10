@@ -7,6 +7,7 @@ use App\Http\Controllers\PostsControllers;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\PostsController;
+use App\Http\Controllers\Frontend\LoginSocialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,4 +75,6 @@ Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateSta
 //tin tức
 Route::get('posts',  [PostsController::class, 'index'])->name('get.posts');
 
-
+// đăng nhâp với facebook
+Route::get('/login/{type}', [LoginSocialController::class, 'login'])->name('login.facebook');
+Route::get('/callback/{type}', [LoginSocialController::class, 'callback']);

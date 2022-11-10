@@ -198,7 +198,7 @@
                             </form>
                             <div class="login_flex_2 mrg-20">
                                 <div class="form-group mb-0 social facebook">
-                                    <a href="" type="submit" class="btn btn-md ">
+                                    <a href="{{ route('login.facebook','facebook')}}" type="submit" class="btn btn-md ">
                                         <i class="fab fa-facebook-square"></i>
                                         Facebook
                                     </a>
