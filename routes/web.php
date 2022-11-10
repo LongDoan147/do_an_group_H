@@ -63,7 +63,7 @@ Route::get('hot-post/{id}', [PostsControllers::class, 'hotPost'])->name('hot.pos
 Route::get('admin/category', [Categoriesontroller::class, 'index'])->name('category.show');
 Route::get('admin/category-add', [Categoriesontroller::class, 'add'])->name('categories.addview');
 Route::post('admin/category-adds', [Categoriesontroller::class, 'addhandle'])->name('categories.addhandle');
-
+Route::get('admin/category-del/{id}', [Categoriesontroller::class, 'deletecat'])->name('categories.del');
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
 

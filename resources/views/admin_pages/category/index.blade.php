@@ -31,7 +31,7 @@
                                 src="{{ asset('uploads/categories/' . $m->hinhanh) }}"></td>
                                 <td>{{$m->trangthai==1?"Hoạt động":"Không hoạt động"}}</td>
                         <td>
-                            <a href=""><i class="fa fa-trash"
+                            <a href="{{ route('categories.del', $m->id) }}"><i class="fa fa-trash"
                                 style="width: 16px;height: 16px;color:red"></i></a>
                             <a href=""><i class="fa fa-edit"
                                 style="width: 16px;height: 16px;color:green"></i></a>

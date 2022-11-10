@@ -57,4 +57,11 @@ class Categoriesontroller extends Controller
         }
         return false;
     }
+        //delete
+    function deletecat($id)
+    {
+        $delCat = Categories::find($id);
+        $delCat->delete();
+        return redirect('admin/category');
+    }
 }
