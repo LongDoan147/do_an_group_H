@@ -61,6 +61,8 @@ Route::get('hot-post/{id}', [PostsControllers::class, 'hotPost'])->name('hot.pos
 
 //Admin category
 Route::get('admin/category', [Categoriesontroller::class, 'index'])->name('category.show');
+Route::get('admin/category-add', [Categoriesontroller::class, 'add'])->name('categories.addview');
+Route::post('admin/category-adds', [Categoriesontroller::class, 'addhandle'])->name('categories.addhandle');
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');

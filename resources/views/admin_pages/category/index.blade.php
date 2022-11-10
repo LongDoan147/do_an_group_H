@@ -4,7 +4,7 @@
         <h3>LOẠI SẢN PHẨM</h3>
     </div>
     <div class="them-nguyen-lieu-dung">
-        <button class="btn btn-success"> <a href="" style="color:white" id="addModalMMU">THÊM DANH MỤC
+        <button class="btn btn-success"> <a href="{{ route('categories.addview') }}" style="color:white" id="addModalMMU">THÊM DANH MỤC
             </a> </button>
     </div>
     <div class="content-show">
