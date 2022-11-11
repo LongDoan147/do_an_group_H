@@ -35,10 +35,16 @@ class ProductController extends Controller
             $discount = 0;
             $product->giaban = ($product->giaban - $discount < 0) ? 0 : $product->giaban - $discount;
 
-
+            if ($product) {
+                $related = Products::where('id_loaisanpham', $product->id_loaisanpham)->get();
+                $meta['title'] = $product->tensp;
+                $meta['description'] = $product->tensp;
+                $meta['url'] = $request->url();
+                $meta['image'] = asset('uploads/product/' . $product->hinhanh);
+            }
             $viewData = [
                 'product' => $product,
-
+                'related' => $related,
                 'meta' => $meta,
             ];
         }
