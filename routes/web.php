@@ -30,33 +30,23 @@ Route::get('/admin', [DashboardController::class, 'show'])->name('showDashboard'
 Route::get('admin/san-pham', [ProductControllers::class, 'show'])->name('products.show');
 
 // loai tin tức trang admin
-// all
+
 Route::get('typepost', [PostsControllers::class, 'getTypePost'])->name('get.typepost'); //show all menu posts
-//add menu posts
 Route::get('create-menupost', [PostsControllers::class, 'createMenuPost'])->name('create.menupost'); //add new menu posts
 Route::post('save-menupost', [PostsControllers::class, 'saveMenuPost'])->name('save.menupost'); //save add new menu posts
-//delete
 Route::get('delete-menupost/{id}', [PostsControllers::class, 'deleteMenuPost'])->name('delete.menupost'); //delete menu posts
-//edit
 Route::get('edit-menupost/{id}', [PostsControllers::class, 'editMenuPost'])->name('edit.menupost'); //edit menu posts
 Route::post('save-edit-menupost/{id}', [PostsControllers::class, 'saveeditMenuPost'])->name('save.edit.menupost'); //save edit menu posts
-//active
 Route::get('active-menupost/{id}', [PostsControllers::class, 'activeMenuPost'])->name('active.menupost'); //active menu posts
 
 // Tin tức trang admin:
-// all
 Route::get('post', [PostsControllers::class, 'getPost'])->name('get.post'); //show all news post
-//add news posts:
 Route::get('create-post', [PostsControllers::class, 'createPost'])->name('create.post'); //add news posts
 Route::post('save-post', [PostsControllers::class, 'savePost'])->name('save.post'); //save news posts
-//delete
 Route::get('delete-post/{id}', [PostsControllers::class, 'deletePost'])->name('delete.post'); //delete new posts
-//edit
 Route::get('edit-post/{id}', [PostsControllers::class, 'editPost'])->name('edit.post'); //edit news posts
 Route::post('save-edit-post/{id}', [PostsControllers::class, 'saveeditPost'])->name('save.edit.post'); //save news posts
-//active
 Route::get('active-post/{id}', [PostsControllers::class, 'activePost'])->name('active.post'); //active and unactive news posts
-//hot
 Route::get('hot-post/{id}', [PostsControllers::class, 'hotPost'])->name('hot.post'); //hot news posts
 
 //Admin category
@@ -68,12 +58,7 @@ Route::get('admin/category-edit/{slug}', [Categoriesontroller::class, 'edit'])->
 Route::post('admin/category-edit/{id}', [Categoriesontroller::class, 'update'])->name('categories.edithandle');
 Route::get('active-category/{id}', [Categoriesontroller::class, 'activeCategory'])->name('active.category');
 
-//trang chủ
-Route::get('/', [HomeController::class, 'index'])->name('get.home');
-
-//Route::post('/quickview', 'HomeController@quickView')->name('quickview');
-
-//products
+// Admin Products
 Route::get('products',  [ProductController::class, 'index'])->name('product');
 Route::get('admin/them-san-pham', [ProductControllers::class, 'addProductView'])->name('products.addview');
 Route::post('admin/them-san-pham', [ProductControllers::class, 'addProductHandle'])->name('products.addhandle');
@@ -82,7 +67,14 @@ Route::get('admin/sua-san-pham/{slug}', [ProductControllers::class, 'editProduct
 Route::post('admin/sua-san-pham/{id}', [ProductControllers::class, 'updateProduct'])->name('products.edithandle');
 Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateStatus'])->name('products.updatestatus');
 
+//trang chủ
+Route::get('/', [HomeController::class, 'index'])->name('get.home');
+
+//Route::post('/quickview', 'HomeController@quickView')->name('quickview');
+
 //tin tức
 Route::get('posts',  [PostsController::class, 'index'])->name('get.posts');
 
+//Detail Product
+Route::get('detail/{p}',  [ProductController::class, 'detail'])->name('detail');
 
