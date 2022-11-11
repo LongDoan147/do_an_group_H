@@ -8,7 +8,11 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\PostsController;
 use App\Http\Controllers\Categoriesontroller;
+use App\Http\Controllers\frontend\RegisterController;
+use App\Http\Controllers\frontend\LoginSocialController;
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,3 +90,55 @@ Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateSta
 Route::get('posts',  [PostsController::class, 'index'])->name('get.posts');
 
 
+//đăng kí 
+Route::get('register', [RegisterController::class,'index'])->name('get.register');
+Route::post('Pregister', [RegisterController::class,'register'])->name('post.register');
+Route::get('active/{customer}/{token}', [RegisterController::class,'active'])->name('register.active');
+Route::get('reActive/{email}', [RegisterController::class,'reSendMail'])->name('re.sendMail');
+
+
+//logout
+Route::post('/admin/login', [LoginController::class,'postLogin'])->name('authlogin');
+Route::get('/admin', [LoginController::class,'getLogin'])->name('auth.login');
+Route::get('/admin/login', [LoginController::class,'logout'])->name('auth.logout');
+Route::get('/logout', [LoginSocialController::class,'logout'])->name('logout');
+
+//đăng nhập
+Route::post('loginAcc', [LoginSocialController::class,'loginAcc'])->name('post.login');
+
+Route::get('x', 'RegisterController@get');
+
+
+//resetpassword admin
+Route::get('admin/reset-password', 'LoginController@resetPasswordview')->name('viewinputmail');
+Route::post('admin/send-mail-reset', 'LoginController@sendMailReset')->name('sendmailreset');
+Route::get('admin/reset-pasworods/{email}', 'LoginController@viewchangepassword')->name('form-reset-password');
+Route::post('admin/reset-pasworods/{email}', 'LoginController@handlerspw')->name('handlerspw');
+
+//Dashboard
+Route::get('admin/dashboard',[DashboardController::class,'show'])->name('showDashboard');
+Route::get('admin/thong-tin-tai-khoan', [DashboardController::class,'infologin'])->name('infologin');
+Route::get('admin/doi-mat-khaus', [DashboardController::class,'changepasswview'])->name('viewupdatepass');
+
+
+//roles
+Route::group(['middleware' => ['checkrole', 'auth']], function () {
+    Route::get('admin/phan-quyen', [RoleController::class,'index'])->name('roles.show');
+    Route::get('admin/phan-quyen/them-nv', [RoleController::class,'addview'])->name('roles.addview');
+    Route::post('admin/phan-quyen/them-nv', [RoleController::class,'addhandle'])->name('roles.addstaff');
+    Route::get('admin/phan-quyen/xoa-nv/{id}', [RoleController::class,'delstaff'])->name('del_staff');
+    Route::get('admin/phan-quyen/sua-nv/{id}', [RoleController::class,'edit'])->name('edithandle');
+    Route::post('admin/phan-quyen/sua-nv/{id}', [RoleController::class,'update'])->name('staff.edithandle');
+
+Route::get('admin/cap-nhat-thong-tin', [RoleController::class,'editinfo'])->name('updateinfo.view');
+Route::post('admin/cap-nhat-thong-tin/{id}', [RoleController::class,'updateinfo'])->name('updateinfo.handle');
+});
+
+    // //quên mật khẩu 
+    // Route::post('forgetPassword', 'LoginSocialController@loginAcc')->name('post.login');
+    // Route::post('forget-password', 'RegisterController@postforgetPasss')->name('post.forget');
+    // Route::get('/get-password/{customer}/{token}', 'RegisterController@getPass')->name('get.pass');
+    // Route::post('/get-password/{customer}', 'RegisterController@postPass')->name('post.pass');
+
+    // Route::get('/changepassword', 'AccountController@changePass')->name('change.pass');
+    // Route::post('/updatePass', 'AccountController@changePassPost')->name('post.change.pass');

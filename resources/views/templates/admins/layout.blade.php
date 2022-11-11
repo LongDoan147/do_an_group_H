@@ -43,7 +43,7 @@
                 </a>
                 <ul class="sidebar-nav" id="menuAdmin">
                     <li class="sidebar-item " value="dashboard">
-                        <a class="sidebar-link " href=" ">
+                        <a class="sidebar-link " href="{{ route('showDashboard') }}">
                             <i class="align-middle" data-feather="user"></i>
                             <span class="align-middle">Dashboard</span>
                         </a>
@@ -208,7 +208,7 @@
                             <span class="align-middle">Bình luận</span>
                         </a>
                     </li>
-
+LoginController
 
                 </ul>
             </div>
@@ -219,6 +219,7 @@
                 @yield('content')
             </div>
         </div>
+        
     </div>
 
 
