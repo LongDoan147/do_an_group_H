@@ -327,7 +327,7 @@
                                         </div>
                                         <div class="woo_product_caption center">
                                             <div class="woo_title">
-                                                <h4 class="woo_pro_title"><a href="{{route('detail', $val->slug)}}">{{$val->tensp}}</a></h4>
+                                                <h4 class="woo_pro_title"><a href="">{{$val->tensp}}</a></h4>
                                             </div>
                                             <div class="woo_price ">
                                                 <h6>
