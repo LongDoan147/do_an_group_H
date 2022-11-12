@@ -8,7 +8,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\PostsController;
 use App\Http\Controllers\Categoriesontroller;
-
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,3 +86,26 @@ Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateSta
 Route::get('posts',  [PostsController::class, 'index'])->name('get.posts');
 
 
+
+//xử lí đơn hàng
+
+// Route::group(['middleware' => ['salestaff', 'checkrole', 'auth']], function () {
+    Route::get('order/{orderStatus}', [OrderController::class,'index'])->name('get.order');
+    Route::get('delorder/{id}', [OrderController::class,'del'])->name('get.del');
+    Route::get('viewDetail/{id}', [OrderController::class,'viewDetail'])->name('get.viewDetail');
+    Route::get('action/{action}/{id}', [OrderController::class,'action'])->name('get.action');
+    Route::get('update/{madh}', [OrderController::class,'update'])->name('get.update');
+    Route::get('actionPayment/{action}/{id}', [OrderController::class,'actionPayment'])->name('get.actionPayment');
+    Route::get('print-order/{madh}', [OrderController::class,'print_order'])->name('print.order');
+    Route::post('cancel-order/{id}', [OrderController::class,'calcelOrder'])->name('cancel.order');
+    Route::get('confirm-order/{id}', [OrderController::class,'confirmOrder'])->name('confirm.order');
+    Route::post('dels', [OrderController::class,'dels'])->name('dels');
+    // tao mo don hang
+    Route::get('createOrder', [OrderController::class,'createOrder'])->name('create.order');
+    Route::get('getCustomer', [OrderController::class,'getCustomer'])->name('get.customer');
+    Route::post('createcart', [OrderController::class,'createcart'])->name('post.createcart');
+    Route::post('deleteCartAd', [OrderController::class,'deleteCartAd'])->name('post.deletecart');
+    Route::post('saveOrderAd', [OrderController::class,'saveOrderAd'])->name('post.saveOrderAd');
+    Route::post('updateCartAd', [OrderController::class,'upCartAd'])->name('post.upCartAd');
+    Route::get('checkProductExist', [OrderController::class,'checkProductExist'])->name('get.checkProductExist');
+// });

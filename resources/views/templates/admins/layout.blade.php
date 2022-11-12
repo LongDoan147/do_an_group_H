@@ -130,33 +130,33 @@
                     </li>
                     <li class="sidebar-item list_order">
 
-                        <a class="sidebar-link" href="">
+                        <a class="sidebar-link" href="{{ route('get.order', 'all') }}">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            <span class="align-middle">Tất cả <span class="count-order all">4</span></span>
+                            <span class="align-middle">Tất cả 
                         </a>
                     </li>
                     <li class="sidebar-item list_order">
-                        <a class="sidebar-link" href=" ">
+                        <a class="sidebar-link" href="{{ route('get.order', 'receive') }}">
                             <i class="fa fa-spinner" aria-hidden="true"></i>
-                            <span class="align-middle">Tiếp nhận <span class="count-order receive">1</span></span>
+                            <span class="align-middle">Tiếp nhận 
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href=" ">
+                        <a class="sidebar-link" href="{{ route('get.order', 'process') }}">
                             <i class="fa fa-refresh" aria-hidden="true"></i>
-                            <span class="align-middle">Đang xử lí <span class="count-order process">1</span></span>
+                            <span class="align-middle">Đang xử lí 
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href=" ">
+                        <a class="sidebar-link" href="{{ route('get.order', 'success') }}">
                             <i class="fa fa-check" aria-hidden="true"></i>
-                            <span class="align-middle">Hoàn thành<span class="count-order success">1</span></span>
+                            <span class="align-middle">Hoàn thành
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="">
+                        <a class="sidebar-link" href="{{ route('get.order', 'cancel') }}">
                             <i class="fa fa-ban" aria-hidden="true"></i>
-                            <span class="align-middle">Đã huỷ <span class="count-order cancel">1</span></span>
+                            <span class="align-middle">Đã huỷ 
                         </a>
                     </li>
                     <li class="sidebar-header">
