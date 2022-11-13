@@ -20,8 +20,7 @@
                 <div class="search-sidebar sm-sidebar" id="filter_search" style="left:0;">
                     <div class="search-sidebar_header">
                         <h4 class="ssh_heading">Close Filter</h4>
-                        <button onclick="closeFilterSearch()" class="w3-bar-item w3-button w3-large"><i
-                                class="ti-close"></i></button>
+                        <button onclick="closeFilterSearch()" class="w3-bar-item w3-button w3-large"><i class="ti-close"></i></button>
                     </div>
                     <div class="search-sidebar-body">
 
@@ -37,7 +36,7 @@
                                         <!-- Single Filter Card -->
                                         @if($danhmuc)
                                         @foreach($danhmuc as $value)
-                                        <div class="single_filter_card filter_card_{{$value->id}}">
+                                        <div class="single_filter_card ">
                                             <h5 class="cate_homeproduct">
                                                 <img src="{{ asset('uploads/categories/'.$value->hinhanh)}}" />
                                                 <a href="#{{$value->id}}">{{$value->tenloai}}</a>
@@ -79,8 +78,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <div class="min_banner mb-5">
-                            <img src="{{ asset('uploads/slide/'. $banner->hinhanh) }}" class="img-fluid rounded"
-                                alt="" />
+                            <img src="{{ asset('uploads/slide/'. $banner->hinhanh) }}" class="img-fluid rounded" alt="" />
                         </div>
                     </div>
                 </div>
@@ -129,13 +127,11 @@
                     </div>
                     @if($product)
                     @foreach($product as $val)
-
                     @if($value->id == $val->id_loaisanpham)
                     <!-- Single Item -->
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="item">
                             <div class="woo_product_grid">
-
                                 <span class="woo_offer_sell">
                                     -
                                 </span>
@@ -144,39 +140,30 @@
                                 </div>
                                 <div class="woo_product_caption center">
                                     <div class="woo_title">
-                                        <h4 class="woo_pro_title"><a
-                                                href="">{{$val->tensp}}</a></h4>
+                                        <h4 class="woo_pro_title"><a href="">{{$val->tensp}}</a></h4>
                                     </div>
                                     <div class="woo_price ">
                                         <h6>
                                             <span class="less_price">
                                                 {{$val->giaban}}
                                             </span>
-
                                             {{$val->giaban}}
-
                                         </h6>
-                                        <a href="javascript:" class="btn-plus quickView" data-id="{{$val->id}}"><i
-                                                class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                                        <a href="javascript:" class="btn-plus quickView" data-id="{{$val->id}}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                     @endif
                     @endforeach
                     @endif
-
-
                 </div>
                 <!-- row -->
                 <!-- row -->
                 @endforeach
                 @endif
-
             </div>
-
         </div>
     </div>
 </section>
@@ -190,8 +177,7 @@
 
                     <div class="input-search ol-lg-12 col-md-12 col-sm-12">
                         <i class="fa fa-search" aria-hidden="true"></i>
-                        <input type="text" class="form-control" id="keyword_search"
-                            placeholder="Tìm tên sản phẩm mà bạn quan tâm">
+                        <input type="text" class="form-control" id="keyword_search" placeholder="Tìm tên sản phẩm mà bạn quan tâm">
                     </div>
                     <div class="row align-items-center list-search col-12">
 

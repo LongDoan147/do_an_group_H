@@ -13,7 +13,6 @@ class HomeController extends Controller
     public function index()
     {
         $product = Products::where('trangthai', 1)->get();
-        $danhmuc = Categories::where('trangthai', 1)->get();
 
         //sản phẩm mới
         $productnew = Products::where('trangthai', 1)
