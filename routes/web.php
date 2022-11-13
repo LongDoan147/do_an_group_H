@@ -10,7 +10,7 @@ use App\Http\Controllers\Frontend\PostsController;
 use App\Http\Controllers\Categoriesontroller;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\ShippingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -115,3 +115,14 @@ Route::post('editpost/{id}', [CouponController::class,'editpost'])->name('edit.c
     Route::post('updateCartAd', [OrderController::class,'upCartAd'])->name('post.upCartAd');
     Route::get('checkProductExist', [OrderController::class,'checkProductExist'])->name('get.checkProductExist');
 // });
+
+
+// thêm phí vận chuyển
+
+Route::get('van-chuyen', [ShippingController::class,'index'])->name('get.shipping');
+
+Route::post('/priceprovince', [ShippingController::class,'post'])->name('post.province');
+Route::post('/changefeeship', [ShippingController::class,'change'])->name('change.province');
+Route::get('/getward/{district}', [ShippingController::class,'getWard'])->name('get.ward');
+Route::get('/getprice/{id}', [ShippingController::class,'getPrice'])->name('get.price');
+Route::get('/delprovince/{procode}', [ShippingController::class,'delProvince'])->name('del.feeprovince');
