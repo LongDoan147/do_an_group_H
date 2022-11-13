@@ -89,7 +89,7 @@
                         Tài khoản
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="">
+                        <a class="sidebar-link" href="{{ route('show.customer') }}">
                             <i class="fa fa-truck" aria-hidden="true"></i>
                             <span class="align-middle">Khách hàng</span>
                         </a>

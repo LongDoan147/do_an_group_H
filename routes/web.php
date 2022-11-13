@@ -11,6 +11,7 @@ use App\Http\Controllers\Categoriesontroller;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -126,3 +127,14 @@ Route::post('/changefeeship', [ShippingController::class,'change'])->name('chang
 Route::get('/getward/{district}', [ShippingController::class,'getWard'])->name('get.ward');
 Route::get('/getprice/{id}', [ShippingController::class,'getPrice'])->name('get.price');
 Route::get('/delprovince/{procode}', [ShippingController::class,'delProvince'])->name('del.feeprovince');
+
+
+//danh sach tai khoan khach hang
+Route::get('/customers', [CustomerController::class,'index'])->name('show.customer');
+Route::get('/del_customers/{id}', [CustomerController::class,'delete'])->name('delete.customer');
+Route::get('/status_customers/{id}', [CustomerController::class,'updateStatus'])->name('update.status.customer');
+Route::get('/add_customers', [CustomerController::class,'add'])->name('get.add.customer');
+Route::post('/save_customers', [CustomerController::class,'saveCustomer'])->name('get.save.customer');
+Route::get('/edit_customers/{id}', [CustomerController::class,'getEditCustomer'])->name('get.edit.customer');
+Route::post('/save_edit_customers{id}', [CustomerController::class,'saveEditCustomer'])->name('save.edit.customer');
+Route::post('/sendmailcoupon', [CustomerController::class,'sendmailCustomer'])->name('sendmail.coupon');
