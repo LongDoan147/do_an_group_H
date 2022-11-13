@@ -2,7 +2,6 @@
 @section('content')
 <div class="slideshow bg-pink">
     <div class="owl-carousel category-slider owl-slide">
-
         <div class="item">
             <img class=" w-100" src="{{ asset('uploads/slide/585540.jpg') }}" alt="slide error">
         </div>
@@ -54,7 +53,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="sec-heading-flex ">
                     <div class="sec-heading-flex-one">
-                        <h2 class="text-animation" data-text="Sản Phẩm Đang khuyến mãi">Sản Phẩm Đang khuyến mãi</h2>
+                        <h2 class="" data-text="Sản Phẩm Đang khuyến mãi">Sản Phẩm Đang khuyến mãi</h2>
                         <span class="line"></span>
                     </div>
 

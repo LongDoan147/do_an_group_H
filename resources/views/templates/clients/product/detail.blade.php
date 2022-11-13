@@ -5,31 +5,23 @@
     <div class="container">
         @if($product)
         <div class="row">
-
             <div class="col-lg-5 col-md-12 col-sm-12">
-
                 <div class="img-detail"><img src="{{ asset('uploads/product/'.$product->hinhanh)}}" alt=""></div>
             </div>
-
             <div class="col-lg-7 col-md-12 col-sm-12">
                 <div class="woo_pr_detail">
-
                     <div class="woo_cats_wrps">
                         <a href="#" class="woo_pr_cats">{{$product->danhmuc->tenloai}}</a>
                     </div>
                     <h2 class="woo_pr_title">{{$product->tensp}}</h2>
-
-
                     <div class="woo_pr_price">
                         <div class="woo_pr_offer_price">
                             <h3>{{$product->giaban}}</h3>
                         </div>
                     </div>
-
                     <div class="woo_pr_short_desc">
                         <p>{{$product->mota}}</p>
                     </div>
-
                     <div class="woo_pr_color flex_inline_center mb-3">
                         <div class="woo_pr_varient">
                             <h6>Size:</h6>
@@ -38,7 +30,8 @@
                             @if(count($product->size) > 1)
                             @foreach($product->size as $key => $value)
                             <div class="custom-varient custom-size">
-                                <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioOne{{$value->id}}" value="{{$value->id}}" data-toggle="form-caption" data-target="#sizeCaption" {{($key == 0 ? "checked" : "")}}>
+                                <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioOne{{$value->id}}"
+                                 value="{{$value->id}}" data-toggle="form-caption" data-target="#sizeCaption" {{($key == 0 ? "checked" : "")}}>
                                 <label class="custom-control-label" for="sizeRadioOne{{$value->id}}">{{ $value->size_name}}<span class="price-plus"> +
                                         {{$value->price ?? '0đ'}}</span></label>
                             </div>
@@ -46,7 +39,8 @@
                             @else
                             @foreach($product->size as $key => $value)
                             <div class="custom-varient custom-size">
-                                <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioOne{{$value->id}}" value="{{$value->id}}" data-toggle="form-caption" data-target="#sizeCaption" {{($key == 0 ? "checked" : "")}}>
+                                <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioOne{{$value->id}}"
+                                 value="{{$value->id}}" data-toggle="form-caption" data-target="#sizeCaption" {{($key == 0 ? "checked" : "")}}>
                                 <label class="custom-control-label" for="sizeRadioOne{{$value->id}}">{{ $value->size_name}}</label>
                             </div>
                             @endforeach
@@ -267,13 +261,11 @@
                             </div>
                             <div class="woo_product_caption center">
                                 <div class="woo_title">
-                                    <h4 class="woo_pro_title"><a
-                                            href="{{route('detail', $value->slug)}}">{{$value->tensp}}</a></h4>
+                                    <h4 class="woo_pro_title"><a href="{{route('detail', $value->slug)}}">{{$value->tensp}}</a></h4>
                                 </div>
                                 <div class="woo_price ">
                                     <h6>{{$value->giaban}}<span class="less_price"></span></h6>
-                                    <a href="javascript:" class="btn-plus quickView" data-id="{{$value->id}}"><i
-                                            class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                                    <a href="javascript:" class="btn-plus quickView" data-id="{{$value->id}}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                                 </div>
                             </div>
 
