@@ -80,7 +80,7 @@
                     </li>
 
                     <li class="sidebar-item" value="shipping">
-                        <a class="sidebar-link" href="">
+                        <a class="sidebar-link" href="{{ route('get.shipping') }}">
                             <i class="fa fa-truck" aria-hidden="true"></i>
                             <span class="align-middle">Vận Chuyển</span>
                         </a>
