@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\PostsController;
 use App\Http\Controllers\Categoriesontroller;
+use App\Http\Controllers\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,3 +79,16 @@ Route::get('posts',  [PostsController::class, 'index'])->name('get.posts');
 //Detail Product
 Route::get('detail/{p}',  [ProductController::class, 'detail'])->name('detail');
 
+//coupon
+// Route::group(['middleware' => ['auth', 'checkrole']], function () {
+Route::get('coupon', [CouponController::class,'index'])->name('get.admin.coupon');
+Route::get('addcoupon', [CouponController::class,'add'])->name('add.coupon');
+Route::post('postcoupon', [CouponController::class,'post'])->name('post.coupon');
+Route::get('show-coupon/{id}', [CouponController::class,'showCoupon'])->name('show.coupon');
+Route::get('active-coupon/{id}', [CouponController::class,'activeCoupon'])->name('active.coupon');
+Route::get('detailCoupon/{id}', [CouponController::class,'detailCoupon'])->name('get.detail.coupon');
+Route::get('edit/{id}', [CouponController::class,'edit'])->name('get.edit');
+Route::get('deletecoupon/{id}', [CouponController::class,'delete'])->name('delete.coupon');
+Route::post('editpost/{id}', [CouponController::class,'editpost'])->name('edit.coupon');
+
+// });

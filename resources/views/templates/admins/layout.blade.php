@@ -73,7 +73,7 @@
                     </li>
 
                     <li class="sidebar-item" value="coupon">
-                        <a class="sidebar-link" href="">
+                        <a class="sidebar-link" href="{{ route('get.admin.coupon') }}">
                             <i class="fa fa-gift" aria-hidden="true"></i>
                             <span class="align-middle">Khuyến Mãi</span>
                         </a>
