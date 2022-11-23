@@ -12,6 +12,9 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RoleController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,8 +29,24 @@ use App\Http\Controllers\CustomerController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+//auth
+Route::post('/admin/login', [LoginController::class,'postLogin'])->name('authlogin');
+Route::get('/admin', [LoginController::class,'getLogin'])->name('auth.login');
+Route::get('/admin/login', [LoginController::class,'logout'])->name('auth.logout');
+
+
+Route::get('admin/reset-password', [LoginController::class,'resetPasswordview'])->name('viewinputmail');
+Route::post('admin/send-mail-reset', [LoginController::class,'sendMailReset'])->name('sendmailreset');
+Route::get('admin/reset-pasworods/{email}', [LoginController::class,'viewchangepassword'])->name('form-reset-password');
+Route::post('admin/reset-pasworods/{email}', [LoginController::class,'handlerspw'])->name('handlerspw');
+
+
+Route::get('admin/dashboard', [DashboardController::class,'show'])->name('showDashboard');
+
+
 //trang admin
-Route::get('/admin', [DashboardController::class, 'show'])->name('showDashboard');
+ //Route::get('/admin', [DashboardController::class, 'show'])->name('showDashboard');
 
 // Product admin
 Route::get('admin/san-pham', [ProductControllers::class, 'show'])->name('products.show');
@@ -138,3 +157,33 @@ Route::post('/save_customers', [CustomerController::class,'saveCustomer'])->name
 Route::get('/edit_customers/{id}', [CustomerController::class,'getEditCustomer'])->name('get.edit.customer');
 Route::post('/save_edit_customers{id}', [CustomerController::class,'saveEditCustomer'])->name('save.edit.customer');
 Route::post('/sendmailcoupon', [CustomerController::class,'sendmailCustomer'])->name('sendmail.coupon');
+
+
+//đăng nhập admin
+Route::get('admin/thong-tin-tai-khoan', [DashboardController::class,'infologin'])->name('infologin');
+
+//Route::group(['middleware' => ['auth', 'checkrole', 'salestaff']], function () {
+    // Route::post('getdata', 'DashboardController@getDateAnalytics')->name('dateget');
+    // Route::post('/admin/getvisitor', 'DashboardController@getVisitor');
+    // Route::post('/admin/draworders', 'DashboardController@getDataToDrawOrders');
+    // Route::post('/admin/statisbydate', 'DashboardController@statisByDate');
+    // Route::post('/admin/statisbymonth', 'DashboardController@statisByMonth');
+    // Route::get('/admin/download-exel', 'DashboardController@export');
+    // Route::post('/admin/drawstatisyear', 'DashboardController@drawstatisyear');
+    // Route::post('/admin/showSaleDaily', 'DashboardController@showSaleDaily');
+    // Route::post('admin/export', 'DashboardController@ExportFiles')->name('exportFile');
+     Route::post('admin/doi-mat-khau', [DashboardController::class,'changepassw'])->name('changepass');
+    Route::get('admin/doi-mat-khaus', [DashboardController::class,'changepasswview'])->name('viewupdatepass');
+    // Route::get('/admin/get-sales', 'DashboardController@getMoneySaleDaily');
+//});
+
+//roles
+//Route::group(['middleware' => ['checkrole', 'auth']], function () {
+    Route::get('admin/phan-quyen', [RoleController::class,'index'])->name('roles.show');
+    Route::get('admin/phan-quyen/them-nv', [RoleController::class,'addview'])->name('roles.addview');
+    Route::post('admin/phan-quyen/them-nv', [RoleController::class,'addhandle'])->name('roles.addstaff');
+    Route::get('admin/phan-quyen/xoa-nv/{id}', [RoleController::class,'delstaff'])->name('del_staff');
+    Route::get('admin/phan-quyen/sua-nv/{id}', [RoleController::class,'edit'])->name('edithandle');
+    Route::post('admin/phan-quyen/sua-nv/{id}', [RoleController::class,'update'])->name('staff.edithandle');
+
+//});
