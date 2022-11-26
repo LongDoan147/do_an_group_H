@@ -165,26 +165,31 @@
                 <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="fas fa-times"></i></span>
                 <div class="modal-body">
                     <div class="row align-items-center">
+
                         <div class="login_signup ol-lg-12 col-md-12 col-sm-12">
                             <h3 class="login_sec_title">Đăng nhập</h3>
+
                             <div class="massage">
                                 Tài khoản không chính xác
                             </div>
                             <form>
+
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="email" required class="form-control emailAcc">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Mật khẩu</label>
                                     <input type="password" required class="form-control passwordAcc" name="password">
                                 </div>
+
                                 <div class="login_flex">
                                     <div class="login_flex_1">
                                         <a href="" id="forgetPassword" class="text-bold">Quên mật khẩu?</a>
                                     </div>
                                     <div class="login_flex_1">
-                                        <a href="" class="text-bold">Đăng kí</a>
+                                        <a href="{{ route('get.register')}}" class="text-bold">Đăng kí</a>
                                     </div>
                                     <div class="login_flex_2">
                                         <div class="form-group mb-0">
@@ -193,6 +198,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </form>
                             <div class="login_flex_2 mrg-20">
                                 <div class="form-group mb-0 social facebook">

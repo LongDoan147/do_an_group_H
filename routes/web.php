@@ -7,6 +7,8 @@ use App\Http\Controllers\PostsControllers;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\PostsController;
+use App\Http\Controllers\Frontend\LoginSocialController;
+use App\Http\Controllers\Frontend\RegisterController;
 use App\Http\Controllers\Categoriesontroller;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
@@ -72,6 +74,12 @@ Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateSta
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
+//đăng nhập
+Route::post('loginAcc', [LoginSocialController:: class, 'loginAcc'])->name('post.login');
+//dk
+Route::get('register', [RegisterController:: class, 'index'])->name('get.register');
+Route::post('Pregister', [RegisterController::class, 'register'])->name('post.register');
+Route::get('active/{customer}/{token}', [RegisterController::class, 'active'])->name('register.active');
 
 //Route::post('/quickview', 'HomeController@quickView')->name('quickview');
 
@@ -83,58 +91,58 @@ Route::get('detail/{p}',  [ProductController::class, 'detail'])->name('detail');
 
 //coupon
 // Route::group(['middleware' => ['auth', 'checkrole']], function () {
-Route::get('coupon', [CouponController::class,'index'])->name('get.admin.coupon');
-Route::get('addcoupon', [CouponController::class,'add'])->name('add.coupon');
-Route::post('postcoupon', [CouponController::class,'post'])->name('post.coupon');
-Route::get('show-coupon/{id}', [CouponController::class,'showCoupon'])->name('show.coupon');
-Route::get('active-coupon/{id}', [CouponController::class,'activeCoupon'])->name('active.coupon');
-Route::get('detailCoupon/{id}', [CouponController::class,'detailCoupon'])->name('get.detail.coupon');
-Route::get('edit/{id}', [CouponController::class,'edit'])->name('get.edit');
-Route::get('deletecoupon/{id}', [CouponController::class,'delete'])->name('delete.coupon');
-Route::post('editpost/{id}', [CouponController::class,'editpost'])->name('edit.coupon');
+Route::get('coupon', [CouponController::class, 'index'])->name('get.admin.coupon');
+Route::get('addcoupon', [CouponController::class, 'add'])->name('add.coupon');
+Route::post('postcoupon', [CouponController::class, 'post'])->name('post.coupon');
+Route::get('show-coupon/{id}', [CouponController::class, 'showCoupon'])->name('show.coupon');
+Route::get('active-coupon/{id}', [CouponController::class, 'activeCoupon'])->name('active.coupon');
+Route::get('detailCoupon/{id}', [CouponController::class, 'detailCoupon'])->name('get.detail.coupon');
+Route::get('edit/{id}', [CouponController::class, 'edit'])->name('get.edit');
+Route::get('deletecoupon/{id}', [CouponController::class, 'delete'])->name('delete.coupon');
+Route::post('editpost/{id}', [CouponController::class, 'editpost'])->name('edit.coupon');
 
 
 //xử lí đơn hàng
 
 // Route::group(['middleware' => ['salestaff', 'checkrole', 'auth']], function () {
-    Route::get('order/{orderStatus}', [OrderController::class,'index'])->name('get.order');
-    Route::get('delorder/{id}', [OrderController::class,'del'])->name('get.del');
-    Route::get('viewDetail/{id}', [OrderController::class,'viewDetail'])->name('get.viewDetail');
-    Route::get('action/{action}/{id}', [OrderController::class,'action'])->name('get.action');
-    Route::get('update/{madh}', [OrderController::class,'update'])->name('get.update');
-    Route::get('actionPayment/{action}/{id}', [OrderController::class,'actionPayment'])->name('get.actionPayment');
-    Route::get('print-order/{madh}', [OrderController::class,'print_order'])->name('print.order');
-    Route::post('cancel-order/{id}', [OrderController::class,'calcelOrder'])->name('cancel.order');
-    Route::get('confirm-order/{id}', [OrderController::class,'confirmOrder'])->name('confirm.order');
-    Route::post('dels', [OrderController::class,'dels'])->name('dels');
-    // tao mo don hang
-    Route::get('createOrder', [OrderController::class,'createOrder'])->name('create.order');
-    Route::get('getCustomer', [OrderController::class,'getCustomer'])->name('get.customer');
-    Route::post('createcart', [OrderController::class,'createcart'])->name('post.createcart');
-    Route::post('deleteCartAd', [OrderController::class,'deleteCartAd'])->name('post.deletecart');
-    Route::post('saveOrderAd', [OrderController::class,'saveOrderAd'])->name('post.saveOrderAd');
-    Route::post('updateCartAd', [OrderController::class,'upCartAd'])->name('post.upCartAd');
-    Route::get('checkProductExist', [OrderController::class,'checkProductExist'])->name('get.checkProductExist');
+Route::get('order/{orderStatus}', [OrderController::class, 'index'])->name('get.order');
+Route::get('delorder/{id}', [OrderController::class, 'del'])->name('get.del');
+Route::get('viewDetail/{id}', [OrderController::class, 'viewDetail'])->name('get.viewDetail');
+Route::get('action/{action}/{id}', [OrderController::class, 'action'])->name('get.action');
+Route::get('update/{madh}', [OrderController::class, 'update'])->name('get.update');
+Route::get('actionPayment/{action}/{id}', [OrderController::class, 'actionPayment'])->name('get.actionPayment');
+Route::get('print-order/{madh}', [OrderController::class, 'print_order'])->name('print.order');
+Route::post('cancel-order/{id}', [OrderController::class, 'calcelOrder'])->name('cancel.order');
+Route::get('confirm-order/{id}', [OrderController::class, 'confirmOrder'])->name('confirm.order');
+Route::post('dels', [OrderController::class, 'dels'])->name('dels');
+// tao mo don hang
+Route::get('createOrder', [OrderController::class, 'createOrder'])->name('create.order');
+Route::get('getCustomer', [OrderController::class, 'getCustomer'])->name('get.customer');
+Route::post('createcart', [OrderController::class, 'createcart'])->name('post.createcart');
+Route::post('deleteCartAd', [OrderController::class, 'deleteCartAd'])->name('post.deletecart');
+Route::post('saveOrderAd', [OrderController::class, 'saveOrderAd'])->name('post.saveOrderAd');
+Route::post('updateCartAd', [OrderController::class, 'upCartAd'])->name('post.upCartAd');
+Route::get('checkProductExist', [OrderController::class, 'checkProductExist'])->name('get.checkProductExist');
 // });
 
 
 // thêm phí vận chuyển
 
-Route::get('van-chuyen', [ShippingController::class,'index'])->name('get.shipping');
+Route::get('van-chuyen', [ShippingController::class, 'index'])->name('get.shipping');
 
-Route::post('/priceprovince', [ShippingController::class,'post'])->name('post.province');
-Route::post('/changefeeship', [ShippingController::class,'change'])->name('change.province');
-Route::get('/getward/{district}', [ShippingController::class,'getWard'])->name('get.ward');
-Route::get('/getprice/{id}', [ShippingController::class,'getPrice'])->name('get.price');
-Route::get('/delprovince/{procode}', [ShippingController::class,'delProvince'])->name('del.feeprovince');
+Route::post('/priceprovince', [ShippingController::class, 'post'])->name('post.province');
+Route::post('/changefeeship', [ShippingController::class, 'change'])->name('change.province');
+Route::get('/getward/{district}', [ShippingController::class, 'getWard'])->name('get.ward');
+Route::get('/getprice/{id}', [ShippingController::class, 'getPrice'])->name('get.price');
+Route::get('/delprovince/{procode}', [ShippingController::class, 'delProvince'])->name('del.feeprovince');
 
 
 //danh sach tai khoan khach hang
-Route::get('/customers', [CustomerController::class,'index'])->name('show.customer');
-Route::get('/del_customers/{id}', [CustomerController::class,'delete'])->name('delete.customer');
-Route::get('/status_customers/{id}', [CustomerController::class,'updateStatus'])->name('update.status.customer');
-Route::get('/add_customers', [CustomerController::class,'add'])->name('get.add.customer');
-Route::post('/save_customers', [CustomerController::class,'saveCustomer'])->name('get.save.customer');
-Route::get('/edit_customers/{id}', [CustomerController::class,'getEditCustomer'])->name('get.edit.customer');
-Route::post('/save_edit_customers{id}', [CustomerController::class,'saveEditCustomer'])->name('save.edit.customer');
-Route::post('/sendmailcoupon', [CustomerController::class,'sendmailCustomer'])->name('sendmail.coupon');
+Route::get('/customers', [CustomerController::class, 'index'])->name('show.customer');
+Route::get('/del_customers/{id}', [CustomerController::class, 'delete'])->name('delete.customer');
+Route::get('/status_customers/{id}', [CustomerController::class, 'updateStatus'])->name('update.status.customer');
+Route::get('/add_customers', [CustomerController::class, 'add'])->name('get.add.customer');
+Route::post('/save_customers', [CustomerController::class, 'saveCustomer'])->name('get.save.customer');
+Route::get('/edit_customers/{id}', [CustomerController::class, 'getEditCustomer'])->name('get.edit.customer');
+Route::post('/save_edit_customers{id}', [CustomerController::class, 'saveEditCustomer'])->name('save.edit.customer');
+Route::post('/sendmailcoupon', [CustomerController::class, 'sendmailCustomer'])->name('sendmail.coupon');
