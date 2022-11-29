@@ -6,6 +6,7 @@ $.ajaxSetup({
 });
 
 
+
 function loadCart(data) {
     $(".item-cart").empty();
     $(".item-cart").html(data);
@@ -30,6 +31,10 @@ function loadCartItem(data) {
         $('#priceTotal').text(0);
     }
 }
+
+
+
+
 
 //đăng nhập với tài khoản
 $(document).on('click', '#loginAcc', function(e) {
@@ -58,11 +63,6 @@ $(document).on('click', '#loginAcc', function(e) {
         }
     });
 })
-
-
-
-
-
 
 $(document).on('click', '.sendComments', function(e) {
     e.preventDefault()
@@ -141,9 +141,6 @@ $(document).on('click', '.reply_commment.delete', function(e) {
     });
 })
 
-$(document).on('click', '.filter .toolbar .search', function() {
-    let form_search = $('#form-search').modal('show')
-})
 
 
 
@@ -159,8 +156,6 @@ $(document).on('click', '.up_user', function(e) {
     }
 
 })
-
-
 
 $(document).on('click', '.btn-wishlist', function(e) {
     e.preventDefault()
