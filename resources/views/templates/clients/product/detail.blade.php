@@ -78,19 +78,7 @@
                                     class="fas fa-heart ml-2"></i></a>
                         </div>
                     </div>
-                    <div class="social mt-4 d-flex align-items-center">
-                        <div class="item-social">
-                            <div class="fb-like" data-href="{{$meta['url']}}" data-width="100px" data-layout="standard"
-                                data-action="like" data-size="large" data-share="false"></div>
-                        </div>
-                        <div class="item-social ml-2">
-                            <div class="fb-share-button" data-href="{{$meta['url']}}" data-width=""
-                                data-layout=" button_count" data-size="large"><a target="_blank"
-                                    href="https://www.facebook.com/sharer/sharer.php?u={{$meta['url']}}"
-                                    class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
-                        </div>
 
-                    </div>
                 </div>
 
             </div>
@@ -107,15 +95,9 @@
                                         aria-expanded="true">Thông
                                         tin</a>
                                 </li>
-
                                 <li class="nav-item">
                                     <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
                                         aria-controls="reviews" aria-selected="false" aria-expanded="false">Đánh giá</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="reviews-faceboook-tab" data-toggle="tab"
-                                        href="#reviews-faceboook" role="tab" aria-controls="reviews-faceboook"
-                                        aria-selected="false" aria-expanded="false">Bình luận</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
@@ -160,73 +142,11 @@
                                                                 <p>{{$value->noidung}}</p>
                                                                 <div class="col-sm-12">
 
-
                                                                     @if($value->id_khachhang === get_user('customer',
                                                                     'id'))
-                                                                    <a href=""
+                                                                    <a href="{{ route('delete.comment', $value->id)}}"
                                                                         class="reply_commment delete">Xoá</a>
                                                                     @endif
-                                                                    <div
-                                                                        class="review-wrapper-body hide form-rep form-rep-{{$value->id}}">
-                                                                        <div class="row">
-
-                                                                            <div class="col-sm-12 form-group">
-                                                                                <textarea
-                                                                                    class="form-control height-110 content-{{$value->id}}"
-                                                                                    placeholder="Nội dung bình luận..."></textarea>
-                                                                            </div>
-                                                                            <div class="col-sm-12">
-                                                                                <a href="{{ route('get.comment',['product', $value->id_sanpham])}}"
-                                                                                    data-id="{{$value->id}}"
-                                                                                    class="btn btn-primary sendCommentsReply">Gửi</a>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <ul class="review-list-{{$value->id}}">
-                                                                        @if(isset($value->replay))
-                                                                        @foreach($value->replay as $reply)
-                                                                        <li>
-                                                                            <div class="reviews-box">
-                                                                                <div class="review-body">
-                                                                                    <div class="review-avatar">
-                                                                                        <img alt=""
-                                                                                            src="{{ $reply->customer->avatar ?? 'https://media.istockphoto.com/photos/no-image-available-picture-id531302789?s=612x612' }}"
-                                                                                            class="avatar avatar-140 photo">
-                                                                                    </div>
-                                                                                    <div class="review-content">
-                                                                                        <div class="review-info">
-                                                                                            <div class="review-comment">
-                                                                                                <div
-                                                                                                    class="review-author">
-                                                                                                    {{$reply->customer->ten}}
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="review-comment-date">
-                                                                                                <div
-                                                                                                    class="review-date">
-                                                                                                    <span>{{ toTime($reply->ngaybl)}}</span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                        <p>{{$reply->noidung}}</p>
-                                                                                        <div class="col-sm-12">
-                                                                                            @if($reply->id_khachhang ===
-                                                                                            get_user('customer', 'id'))
-                                                                                            <a href=""
-                                                                                                class="reply_commment delete">Xoá</a>
-                                                                                            @endif
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        @endforeach
-                                                                        @endif
-                                                                    </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -269,14 +189,6 @@
                                         @endif
                                     </div>
 
-                                </div>
-                                <div class="tab-pane fade " id="reviews-faceboook" role="tabpanel"
-                                    aria-labelledby="reviews-faceboook" aria-expanded="true">
-                                    <p>
-                                    <div class="fb-comments" data-href="{{$meta['url']}}" data-width=""
-                                        data-numposts="5">
-                                    </div>
-                                    </p>
                                 </div>
 
                             </div>

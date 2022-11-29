@@ -38,4 +38,28 @@ class CommentController extends Controller
             return view('templates.clients.product.comments', $viewData);
         }
     }
+
+    public function deleteComment($id)
+    {
+        $comments = Comments::find($id);
+        $type = $comments->type;
+        $idp = $comments->id_sanpham;
+        $idb = $comments->id_baiviet;
+        Comments::where('parent_id', $comments->id)->delete();
+        $comments->delete();
+        if ($type == 'product') {
+
+            $comments = Comments::where('id_sanpham', $idp)
+                ->where('type', 'product')
+                ->where('parent_id', 0)->get();
+        } else {
+            $comments = Comments::where('id_baiviet', $idb)
+                ->where('type', 'post')
+                ->where('parent_id', 0)->get();
+        }
+        $viewData = [
+            'comments' => $comments
+        ];
+        return view('templates.clients.product.comments', $viewData);
+    }
 }

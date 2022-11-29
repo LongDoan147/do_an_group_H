@@ -95,6 +95,7 @@ Route::get('posts',  [PostsController::class, 'index'])->name('get.posts');
 Route::get('detail/{p}',  [ProductController::class, 'detail'])->name('detail');
 //bình luận
 Route::post('comment/{type}/{id}', [CommentController::class, 'comment'])->name('get.comment');
+Route::get('delete/{id}',  [CommentController::class, 'deleteComment'])->name('delete.comment'); //delete comment
 
 //coupon
 // Route::group(['middleware' => ['auth', 'checkrole']], function () {
