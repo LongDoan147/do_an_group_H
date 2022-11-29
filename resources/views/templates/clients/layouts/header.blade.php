@@ -21,9 +21,9 @@
                         <div class="topbar_menu">
                             <ul>
                                 <li><a href="#"><i class="fab fa-youtube"></i>Youtube</a></li>
-
+                                @if(get_user('customer'))
                                 <li class="hide-m"><a href=""><i class="fas fa-heart"></i>Yêu thích</a></li>
-
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -31,6 +31,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- Main header -->
         <div class="header_nav">
@@ -49,20 +50,24 @@
                             <div class="nav-menus-wrapper" style="transition-property: none;">
                                 <ul class="nav-menu">
 
-                                    <li class=""><a href="{{ route('product')}}">Đặt hàng<span class="submenu-indicator"></span></a>
+                                    <li class=""><a href="{{ route('product')}}">Đặt hàng<span
+                                                class="submenu-indicator"></span></a>
                                     </li>
 
-                                    <li><a href="">Tin tức<span class="submenu-indicator"></span></a>
+                                    <li><a href="{{ route('get.posts')}}">Tin tức<span
+                                                class="submenu-indicator"></span></a>
 
 
                                     </li>
 
-                                    <li><a href="">Cửa hàng<span class="submenu-indicator"></span></a>
+                                    <li><a href="">Cửa hàng<span
+                                                class="submenu-indicator"></span></a>
 
                                     </li>
 
 
-                                    <li><a href="">Khuyến mãi<span class="submenu-indicator"></span></a>
+                                    <li><a href="">Khuyến mãi<span
+                                                class="submenu-indicator"></span></a>
                                         <!-- <ul class="nav-dropdown nav-submenu">
                                             <li><a href="blog.html">...</a></li>
 
@@ -80,15 +85,15 @@
                             <ul>
                                 <!-- <li><a class="border-icon" data-toggle="collapse" href="#mySearch" role="button" aria-expanded="false" aria-controls="mySearch"><i class="fas fa-search"></i></a></li> -->
                                 <li><a href="" class="dropdow-user border-icon ">
-                                        <div class="cus" style="display: none;">
-                                            <i class="fas fa-user-circle mgr-10"></i>
-                                            <h6 class="text-user text-overflow">
-                                                Khách hàng
-                                            </h6>
-                                        </div>
+                                        @if(get_user('customer'))
+                                        <i class="fas fa-user-circle mgr-10"></i>
+                                        <h6 class="text-user text-overflow">
+                                            {{ (get_user('customer','ten')) ? get_user('customer','ten') : 'Khách hàng' }}
+                                        </h6>
+                                        @else
                                         <i class="fas fa-user-circle"></i>
                                         <h6 class=" text-user text-overflow">Đăng nhập</h6>
-
+                                        @endif
                                     </a>
                                     <div class="user-dropdown">
                                         <i class="fas fa-times dropexit"></i>
@@ -97,42 +102,47 @@
                                                 <i class="fa fa-clock" aria-hidden="true"></i>
                                                 <a href="" class="ml-2">Tra cứu đơn hàng</a>
                                             </li>
-
+                                            @if( get_user('customer'))
                                             <li>
                                                 <i class="fas fa-user"></i>
-                                                <a class="ml-2" href=" ">Thông tin tài
+                                                <a class="ml-2" href="">Thông tin tài
                                                     khoản</a>
                                             </li>
-
+                                            @if(!get_user('customer','type_social'))
                                             <li>
                                                 <i class="fas fa-sync"></i>
                                                 <a class="ml-2" href="">Đổi mật khẩu</a>
                                             </li>
-
+                                            @endif
                                             <li>
                                                 <i class="fas fa-sign-out-alt"></i>
-                                                <a class="ml-2" href="">Đăng xuất</a>
+                                                <a class="ml-2" href="{{ route('logout')}}">Đăng xuất</a>
                                             </li>
-
+                                            @else
 
                                             <li>
                                                 <i class="fas fa-user"></i>
                                                 <a class="ml-2 " data-toggle="modal" data-target="#login">Đăng nhập</a>
                                             </li>
 
-
+                                            @endif
 
 
                                         </ul>
                                     </div>
                                 </li>
                                 <li>
-
-                                    <a class="border-icon" href="javascript:void(0);" onclick="openRightMenu()"><i class="fas fa-cart-plus"></i><span class="cart_counter">
-                                            1
+                                    @if(Route::currentRouteName() !== "get.cart")
+                                    <a class="border-icon" href="javascript:void(0);" onclick="openRightMenu()"><i
+                                            class="fas fa-cart-plus"></i><span class="cart_counter">
+                                            @if(Session::has('cart') != null)
+                                            {{ Session::get('cart')->totalQuanty}}
+                                            @else
+                                            0
+                                            @endif
                                         </span></a>
 
-
+                                    @endif
                                 </li>
                             </ul>
                         </div>
@@ -141,7 +151,8 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Tìm sản phẩm ?">
                                     <div class="input-group-append">
-                                        <button class="btn search_btn" type="button"><i class="fas fa-search"></i></button>
+                                        <button class="btn search_btn" type="button"><i
+                                                class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -165,26 +176,31 @@
                 <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="fas fa-times"></i></span>
                 <div class="modal-body">
                     <div class="row align-items-center">
+
                         <div class="login_signup ol-lg-12 col-md-12 col-sm-12">
                             <h3 class="login_sec_title">Đăng nhập</h3>
+
                             <div class="massage">
                                 Tài khoản không chính xác
                             </div>
                             <form>
+
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="email" required class="form-control emailAcc">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Mật khẩu</label>
                                     <input type="password" required class="form-control passwordAcc" name="password">
                                 </div>
+
                                 <div class="login_flex">
                                     <div class="login_flex_1">
                                         <a href="" id="forgetPassword" class="text-bold">Quên mật khẩu?</a>
                                     </div>
                                     <div class="login_flex_1">
-                                        <a href="" class="text-bold">Đăng kí</a>
+                                        <a href="{{ route('get.register')}}" class="text-bold">Đăng kí</a>
                                     </div>
                                     <div class="login_flex_2">
                                         <div class="form-group mb-0">
@@ -193,6 +209,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </form>
                             <div class="login_flex_2 mrg-20">
                                 <div class="form-group mb-0 social facebook">

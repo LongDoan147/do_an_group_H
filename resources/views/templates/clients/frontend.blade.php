@@ -19,8 +19,7 @@
     <!-- Custom CSS -->
     <link href="{{ asset('frontend/assets/css/styles.css') }}" rel="stylesheet">
     <!-- <script src="{{ asset('backend/assets/alert/alertify.min.js') }}"></script> -->
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="{{ asset('backend/assets/alert/css/alertify.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/alert/css/themes/default.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/alert/css/themes/semantic.min.css') }}" />
@@ -58,10 +57,8 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
         </script> -->
-        <script async defer crossorigin="anonymous"
-            src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=1056375581823890&autoLogAppEvents=1"
-            nonce="JhpQ55Gl"></script>
-            @include('templates.clients.layouts.header')
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=1056375581823890&autoLogAppEvents=1" nonce="JhpQ55Gl"></script>
+        @include('templates.clients.layouts.header')
         @yield('content')
 
         <!--========= JS Here =========-->
@@ -86,13 +83,41 @@
 
         @include('templates.clients.layouts.footer')
         <script>
-        function openRightMenu() {
-            document.getElementById("rightMenu").style.display = "block";
-        }
+            function openRightMenu() {
+                document.getElementById("rightMenu").style.display = "block";
+            }
 
-        function closeRightMenu() {
-            document.getElementById("rightMenu").style.display = "none";
-        }
+            function closeRightMenu() {
+                document.getElementById("rightMenu").style.display = "none";
+            }
+
+            //đăng nhập với tài khoản
+            $(document).on('click', '#loginAcc', function(e) {
+                e.preventDefault();
+                let email = $('.emailAcc').val();
+                let password = $('.passwordAcc').val();
+                $.ajax({
+                    url: "{{ route('post.login')}}",
+                    type: 'post',
+                    data: {
+                        email: email,
+                        password: password
+
+                    },
+                    success: function(data) {
+                        if (data == true) {
+                            location.reload();
+                            toastr.options.timeOut = 30;
+                            toastr.success('Đăng nhập thành công');
+                        } else {
+                            $('.massage').empty()
+                            $('.massage').append(data.loginAcc)
+                            $('.massage').show().delay(3000).fadeOut()
+                        }
+
+                    }
+                });
+            })
         </script>
         @include('templates.clients.js.js')
         @include('templates.clients.js.notification')

@@ -36,7 +36,33 @@ function loadCartItem(data) {
 
 
 
+//đăng nhập với tài khoản
+$(document).on('click', '#loginAcc', function(e) {
+    e.preventDefault();
+    let email = $('.emailAcc').val();
+    let password = $('.passwordAcc').val();
+    $.ajax({
+        url: "{{ route('post.login')}}",
+        type: 'post',
+        data: {
+            email: email,
+            password: password
 
+        },
+        success: function(data) {
+            if (data == true) {
+                location.reload();
+                toastr.options.timeOut = 30;
+                toastr.success('Đăng nhập thành công');
+            } else {
+                $('.massage').empty()
+                $('.massage').append(data.loginAcc)
+                $('.massage').show().delay(3000).fadeOut()
+            }
+
+        }
+    });
+})
 
 $(document).on('click', '.sendComments', function(e) {
     e.preventDefault()
@@ -115,9 +141,6 @@ $(document).on('click', '.reply_commment.delete', function(e) {
     });
 })
 
-$(document).on('click', '.filter .toolbar .search', function() {
-    let form_search = $('#form-search').modal('show')
-})
 
 
 
@@ -133,8 +156,6 @@ $(document).on('click', '.up_user', function(e) {
     }
 
 })
-
-
 
 $(document).on('click', '.btn-wishlist', function(e) {
     e.preventDefault()
