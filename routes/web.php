@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\PostsController;
 use App\Http\Controllers\Frontend\LoginSocialController;
 use App\Http\Controllers\Frontend\RegisterController;
+use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Categoriesontroller;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
@@ -92,6 +93,8 @@ Route::get('posts',  [PostsController::class, 'index'])->name('get.posts');
 
 //Detail Product
 Route::get('detail/{p}',  [ProductController::class, 'detail'])->name('detail');
+//bình luận
+Route::post('comment/{type}/{id}', [CommentController::class, 'comment'])->name('get.comment');
 
 //coupon
 // Route::group(['middleware' => ['auth', 'checkrole']], function () {
