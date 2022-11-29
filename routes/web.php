@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\PostsController;
 use App\Http\Controllers\Frontend\LoginSocialController;
 use App\Http\Controllers\Frontend\RegisterController;
 use App\Http\Controllers\Frontend\CommentController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Categoriesontroller;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
@@ -96,6 +97,9 @@ Route::get('detail/{p}',  [ProductController::class, 'detail'])->name('detail');
 //bình luận
 Route::post('comment/{type}/{id}', [CommentController::class, 'comment'])->name('get.comment');
 Route::get('delete/{id}',  [CommentController::class, 'deleteComment'])->name('delete.comment'); //delete comment
+//giỏ hàng
+Route::post('/addCart', 'CartController@addCart')->name('add.cart');
+Route::get('/Cart', [CartController:: class, 'index'])->name('get.cart'); //Giỏ hàng
 
 //coupon
 // Route::group(['middleware' => ['auth', 'checkrole']], function () {
