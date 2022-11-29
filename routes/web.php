@@ -76,11 +76,14 @@ Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateSta
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
 //đăng nhập
 Route::post('loginAcc', [LoginSocialController:: class, 'loginAcc'])->name('post.login');
+Route::get('/logout', [LoginSocialController::class, 'logout'])->name('logout');
 // Route::post('forgetPassword', [LoginSocialController::class, 'loginAcc'])->name('post.login');
 //dk
 Route::get('register', [RegisterController:: class, 'index'])->name('get.register');
 Route::post('Pregister', [RegisterController::class, 'register'])->name('post.register');
 Route::get('active/{customer}/{token}', [RegisterController::class, 'active'])->name('register.active');
+
+
 
 //Route::post('/quickview', 'HomeController@quickView')->name('quickview');
 

@@ -116,7 +116,7 @@
                                             @endif
                                             <li>
                                                 <i class="fas fa-sign-out-alt"></i>
-                                                <a class="ml-2" href="">Đăng xuất</a>
+                                                <a class="ml-2" href="{{ route('logout')}}">Đăng xuất</a>
                                             </li>
                                             @else
 
