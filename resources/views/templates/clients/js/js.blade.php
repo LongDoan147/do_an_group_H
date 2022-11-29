@@ -90,42 +90,6 @@ $(document).on('click', '.sendComments', function(e) {
     }
 })
 
-$(document).on('click', '.reply_commment', function(e) {
-    e.preventDefault()
-    let id_rep = $(this).data('id')
-    $('.form-rep-' + id_rep).slideToggle();
-})
-
-$(document).on('click', '.sendCommentsReply', function(e) {
-    e.preventDefault()
-    let id = $(this).data('id')
-    let textContent = $('.content-' + id)
-    let content = textContent.val()
-    let url = $(this).attr('href');
-    let list_commment = $('.review-list');
-
-    if (content) {
-        $.ajax({
-            url: url,
-            type: 'post',
-            data: {
-                content: content,
-                id_reply: id
-            },
-            success: function(data) {
-                if (data) {
-                    console.log(data)
-                    list_commment.html(data)
-                }
-            }
-        });
-    } else {
-        textContent.addClass('danger')
-        toastr.error('Bình luận không được bỏ trống.')
-    }
-
-})
-
 $(document).on('click', '.reply_commment.delete', function(e) {
     e.preventDefault()
     let url = $(this).attr('href');
@@ -140,8 +104,6 @@ $(document).on('click', '.reply_commment.delete', function(e) {
         }
     });
 })
-
-
 
 
 $(document).on('click', '.up_user', function(e) {
