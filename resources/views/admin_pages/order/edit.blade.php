@@ -32,46 +32,6 @@
 
                         </div>
 
-                        <div class="progress-status">
-
-                            <div class="progress">
-                                <ul>
-                                    @if($order->trangthai == -1)
-                                    <li
-                                        class="step step01  whiteT {{ ($order->trangthai >= -1 ) ? 'active cancelT' : ''}}">
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                        <div class="step-inner"></div>
-                                    </li>
-                                    <li class="step step02 {{ ($order->trangthai >= -1 ) ? 'active cancelT' : ''}}">
-                                        <i class="fa fa-ban" aria-hidden="true"></i>
-                                        <div class="step-inner">Đã huỷ</div>
-                                    </li>
-                                    @else
-                                    <li class="step step01  {{ ($order->trangthai >= 1 ) ? 'active' : ''}}">
-                                        <i class="fa fa-spinner" aria-hidden="true"></i>
-                                        <div class="step-inner">Chờ xác nhận</div>
-                                    </li>
-                                    <li class="step step02 {{ ($order->trangthai >= 2 ) ? 'active' : ''}}">
-                                        <i class="fa fa-refresh" aria-hidden="true"></i>
-                                        <div class="step-inner">Đang xử lí</div>
-                                    </li>
-                                    <li class="step step03 {{ ($order->trangthai >= 3 ) ? 'active' : ''}}">
-                                        <i class="fa fa-truck" aria-hidden="true"></i>
-                                        <div class="step-inner">Đang vận chuyển</div>
-                                    </li>
-                                    <li class="step step04 {{ ($order->trangthai >= 4 ) ? 'active' : ''}}">
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                        <div class="step-inner">Đã giao</div>
-                                    </li>
-                                    @endif
-                                </ul>
-
-                                <div class="line {{ $order->trangthai == -1  ? 'cancel' : ''}}">
-                                    <div class="line-progress {{ $order->getStatus($order->trangthai)['progress']}}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="card">

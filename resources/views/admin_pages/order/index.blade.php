@@ -176,7 +176,7 @@ window.addEventListener('load', (e) => {
                         </tbody>
 
                     </table>
-
+                    {!! $order->appends($query)->links() !!}
                 </form>
 
             </div>
