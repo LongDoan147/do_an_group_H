@@ -132,7 +132,7 @@
         </div>
         <div class="cart_action">
             <ul>
-                <li><a href="" class="btn btn-go-cart btn-theme">Đến giỏ hàng</a></li>
+                <li><a href="{{ route('get.cart')}}" class="btn btn-go-cart btn-theme">Đến giỏ hàng</a></li>
             </ul>
         </div>
 

@@ -64,6 +64,7 @@ $(document).on('click', '#loginAcc', function(e) {
     });
 })
 
+//Send Comment
 $(document).on('click', '.sendComments', function(e) {
     e.preventDefault()
     let textContent = $('.content-commment')
@@ -90,6 +91,7 @@ $(document).on('click', '.sendComments', function(e) {
     }
 })
 
+//Delete Comment
 $(document).on('click', '.reply_commment.delete', function(e) {
     e.preventDefault()
     let url = $(this).attr('href');
@@ -103,6 +105,40 @@ $(document).on('click', '.reply_commment.delete', function(e) {
             }
         }
     });
+})
+
+//Add Cart
+$(document).on('click', '#addCart', function() {
+    let id = $(this).data('id')
+    let sl = $('input[name="addSl"]').val()
+    let size = $('input[name="sizeRadio"]')
+    let slSize = null;
+    if (size.length > 0) {
+        for (let i = 0; i < size.length; i++) {
+            if (size[i].checked) {
+                slSize = size[i].value
+            }
+        }
+    }
+    if (sl > 0) {
+        $.ajax({
+            url: '{{ route("add.cart")}}',
+            type: 'post',
+            data: {
+                id: id,
+                sl: sl,
+                size: slSize
+            },
+            success(data) {
+                loadCart(data);
+                loadCartItem(data);
+                $('#viewproduct-over').modal('hide');
+                toastr.options.timeOut = 30;
+                toastr.success('Đã thêm món');
+
+            }
+        })
+    }
 })
 
 
