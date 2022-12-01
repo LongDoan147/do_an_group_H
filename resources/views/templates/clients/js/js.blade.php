@@ -36,7 +36,33 @@ function loadCartItem(data) {
 
 
 
+//đăng nhập với tài khoản
+$(document).on('click', '#loginAcc', function(e) {
+    e.preventDefault();
+    let email = $('.emailAcc').val();
+    let password = $('.passwordAcc').val();
+    $.ajax({
+        url: "{{ route('post.login')}}",
+        type: 'post',
+        data: {
+            email: email,
+            password: password
 
+        },
+        success: function(data) {
+            if (data == true) {
+                location.reload();
+                toastr.options.timeOut = 30;
+                toastr.success('Đăng nhập thành công');
+            } else {
+                $('.massage').empty()
+                $('.massage').append(data.loginAcc)
+                $('.massage').show().delay(3000).fadeOut()
+            }
+
+        }
+    });
+})
 
 $(document).on('click', '.sendComments', function(e) {
     e.preventDefault()
@@ -64,42 +90,6 @@ $(document).on('click', '.sendComments', function(e) {
     }
 })
 
-$(document).on('click', '.reply_commment', function(e) {
-    e.preventDefault()
-    let id_rep = $(this).data('id')
-    $('.form-rep-' + id_rep).slideToggle();
-})
-
-$(document).on('click', '.sendCommentsReply', function(e) {
-    e.preventDefault()
-    let id = $(this).data('id')
-    let textContent = $('.content-' + id)
-    let content = textContent.val()
-    let url = $(this).attr('href');
-    let list_commment = $('.review-list');
-
-    if (content) {
-        $.ajax({
-            url: url,
-            type: 'post',
-            data: {
-                content: content,
-                id_reply: id
-            },
-            success: function(data) {
-                if (data) {
-                    console.log(data)
-                    list_commment.html(data)
-                }
-            }
-        });
-    } else {
-        textContent.addClass('danger')
-        toastr.error('Bình luận không được bỏ trống.')
-    }
-
-})
-
 $(document).on('click', '.reply_commment.delete', function(e) {
     e.preventDefault()
     let url = $(this).attr('href');
@@ -115,11 +105,6 @@ $(document).on('click', '.reply_commment.delete', function(e) {
     });
 })
 
-$(document).on('click', '.filter .toolbar .search', function() {
-    let form_search = $('#form-search').modal('show')
-})
-
-
 
 $(document).on('click', '.up_user', function(e) {
     e.preventDefault()
@@ -133,8 +118,6 @@ $(document).on('click', '.up_user', function(e) {
     }
 
 })
-
-
 
 $(document).on('click', '.btn-wishlist', function(e) {
     e.preventDefault()
