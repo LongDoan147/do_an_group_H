@@ -64,7 +64,7 @@ window.addEventListener('load', (e) => {
                         </td>
                         @endif
                         <td>
-                            <a href="" class="btn btn-danger mgr-5" id="edit">
+                            <a href="{{ route('delete.comments', $value->id)}}" class="btn btn-danger mgr-5" id="edit">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </td>

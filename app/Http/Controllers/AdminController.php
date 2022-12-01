@@ -12,4 +12,11 @@ class AdminController extends Controller
         $comments = Comments::paginate(10);
         return view('admin_pages.static.comments', ['comments' => $comments]);
     }
+
+    public function deleteComment($id)
+    {
+        $slide = Comments::find($id);
+        $slide->delete();
+        return redirect()->route('get.all.comments')->with('message', 'Đã xoá thành công.');
+    }
 }

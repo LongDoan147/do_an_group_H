@@ -95,6 +95,7 @@ Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateSta
 
 //admin comment
 Route::get('comments', [AdminController::class, 'getComment'])->name('get.all.comments');
+Route::get('delete-comments/{id}', [AdminController::class, 'deleteComment'])->name('delete.comments');
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
