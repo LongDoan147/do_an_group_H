@@ -36,15 +36,7 @@ window.addEventListener('load', (e) => {
                             </select>
                         </div>
                         @endif
-                        <div class="dis-inline">
-                            <select class="form-control" name="payment">
-                                <option value="10">Thanh toán</option>
-                                <option value="1" {{Request::get('payment') == 1 ? "selected" : ""}}>Chờ thanh toán
-                                </option>
-                                <option value="2" {{Request::get('payment') == 2 ? "selected" : ""}}>Đã thanh toán
-                                </option>
-                            </select>
-                        </div>
+
                         <button class="btn btn-primary" type="submit">Tìm kiếm</button>
                     </form>
 
