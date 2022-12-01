@@ -17,6 +17,7 @@ use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +92,10 @@ Route::get('admin/xoa-san-pham/{id}', [ProductControllers::class, 'deleteProduct
 Route::get('admin/sua-san-pham/{slug}', [ProductControllers::class, 'editProductView'])->name('products.editview');
 Route::post('admin/sua-san-pham/{id}', [ProductControllers::class, 'updateProduct'])->name('products.edithandle');
 Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateStatus'])->name('products.updatestatus');
+
+//admin comment
+Route::get('comments', [AdminController::class, 'getComment'])->name('get.all.comments');
+Route::get('delete-comments/{id}', [AdminController::class, 'deleteComment'])->name('delete.comments');
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');

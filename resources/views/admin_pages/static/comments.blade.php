@@ -9,7 +9,7 @@ window.addEventListener('load', (e) => {
 </script>
 @endif
 <div class="container-fluid coupon form_ql">
-    <form method="post" class="form-submit" action="{{ route('sendmail.all.contact')}}" enctype="multipart/form-data">
+    <form method="post" class="form-submit" action="" enctype="multipart/form-data">
         @csrf
         <div class="card_1">
             <h3 class="card-title">Bình luận</h3>
