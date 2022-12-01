@@ -140,14 +140,11 @@
                                 </div>
                                 <div class="woo_product_caption center">
                                     <div class="woo_title">
-                                        <h4 class="woo_pro_title"><a href="">{{$val->tensp}}</a></h4>
+                                        <h4 class="woo_pro_title"><a href="{{route('detail', $val->slug)}}">{{$val->tensp}}</a></h4>
                                     </div>
                                     <div class="woo_price ">
                                         <h6>
-                                            <span class="less_price">
-                                                {{$val->giaban}}
-                                            </span>
-                                            {{$val->giaban}}
+                                        {{currency_format($val->giaban)}}
                                         </h6>
                                         <a href="javascript:" class="btn-plus quickView" data-id="{{$val->id}}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                                     </div>
