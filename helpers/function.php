@@ -83,4 +83,26 @@ if (!function_exists('laydonvinl')) {
         $getUnit = Materials::where('name', $nameMal)->first();
         return $getUnit->don_vi_nglieu;
     }
+
+    if (!function_exists('getNameLog')) {
+    function getNameLog()
+    {
+        # code...
+        $getIDLogin = Auth::user()->id;
+        $getInfo = User::where('id', $getIDLogin)->first();
+        $nameLog = $getInfo->name_staff;
+        return $nameLog;
+    }
+}
+}
+
+if (!function_exists('getNameLog')) {
+    function getNameLog()
+    {
+        # code...
+        $getIDLogin = Auth::user()->id;
+        $getInfo = User::where('id', $getIDLogin)->first();
+        $nameLog = $getInfo->name_staff;
+        return $nameLog;
+    }
 }
