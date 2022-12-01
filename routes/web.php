@@ -98,7 +98,7 @@ Route::get('detail/{p}',  [ProductController::class, 'detail'])->name('detail');
 Route::post('comment/{type}/{id}', [CommentController::class, 'comment'])->name('get.comment');
 Route::get('delete/{id}',  [CommentController::class, 'deleteComment'])->name('delete.comment'); //delete comment
 //giỏ hàng
-Route::post('/addCart', 'CartController@addCart')->name('add.cart');
+Route::post('/addCart', [CartController::class, 'addCart'])->name('add.cart');
 Route::get('/Cart', [CartController:: class, 'index'])->name('get.cart'); //Giỏ hàng
 
 //coupon
