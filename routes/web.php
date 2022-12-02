@@ -34,7 +34,7 @@ use App\Http\Controllers\AdminController;
 //     return view('welcome');
 // });
 
-//auth
+//auth admin login
 Route::post('/admin/login', [LoginController::class,'postLogin'])->name('authlogin');
 Route::get('/admin', [LoginController::class,'getLogin'])->name('auth.login');
 Route::get('/admin/login', [LoginController::class,'logout'])->name('auth.logout');
