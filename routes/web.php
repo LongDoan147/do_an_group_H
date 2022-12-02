@@ -94,8 +94,8 @@ Route::post('admin/sua-san-pham/{id}', [ProductControllers::class, 'updateProduc
 Route::post('/admin/cap-nhat-trang-thai', [ProductControllers::class, 'updateStatus'])->name('products.updatestatus');
 
 //admin comment
-Route::get('comments', [AdminController::class, 'getComment'])->name('get.all.comments');
-Route::get('delete-comments/{id}', [AdminController::class, 'deleteComment'])->name('delete.comments');
+Route::get('comments', [AdminController::class, 'getComment'])->name('get.all.comments'); //get all comment admin
+Route::get('delete-comments/{id}', [AdminController::class, 'deleteComment'])->name('delete.comments'); // delete comment admin
 
 //trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('get.home');
