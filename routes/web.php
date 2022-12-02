@@ -162,28 +162,12 @@ Route::post('/sendmailcoupon', [CustomerController::class,'sendmailCustomer'])->
 //đăng nhập admin
 Route::get('admin/thong-tin-tai-khoan', [DashboardController::class,'infologin'])->name('infologin');
 
-//Route::group(['middleware' => ['auth', 'checkrole', 'salestaff']], function () {
-    // Route::post('getdata', 'DashboardController@getDateAnalytics')->name('dateget');
-    // Route::post('/admin/getvisitor', 'DashboardController@getVisitor');
-    // Route::post('/admin/draworders', 'DashboardController@getDataToDrawOrders');
-    // Route::post('/admin/statisbydate', 'DashboardController@statisByDate');
-    // Route::post('/admin/statisbymonth', 'DashboardController@statisByMonth');
-    // Route::get('/admin/download-exel', 'DashboardController@export');
-    // Route::post('/admin/drawstatisyear', 'DashboardController@drawstatisyear');
-    // Route::post('/admin/showSaleDaily', 'DashboardController@showSaleDaily');
-    // Route::post('admin/export', 'DashboardController@ExportFiles')->name('exportFile');
-     Route::post('admin/doi-mat-khau', [DashboardController::class,'changepassw'])->name('changepass');
-    Route::get('admin/doi-mat-khaus', [DashboardController::class,'changepasswview'])->name('viewupdatepass');
-    // Route::get('/admin/get-sales', 'DashboardController@getMoneySaleDaily');
-//});
+Route::post('admin/doi-mat-khau', [DashboardController::class,'changepassw'])->name('changepass');
+Route::get('admin/doi-mat-khaus', [DashboardController::class,'changepasswview'])->name('viewupdatepass');
 
-//roles
-//Route::group(['middleware' => ['checkrole', 'auth']], function () {
-    Route::get('admin/phan-quyen', [RoleController::class,'index'])->name('roles.show');
-    Route::get('admin/phan-quyen/them-nv', [RoleController::class,'addview'])->name('roles.addview');
-    Route::post('admin/phan-quyen/them-nv', [RoleController::class,'addhandle'])->name('roles.addstaff');
-    Route::get('admin/phan-quyen/xoa-nv/{id}', [RoleController::class,'delstaff'])->name('del_staff');
-    Route::get('admin/phan-quyen/sua-nv/{id}', [RoleController::class,'edit'])->name('edithandle');
-    Route::post('admin/phan-quyen/sua-nv/{id}', [RoleController::class,'update'])->name('staff.edithandle');
-
-//});
+Route::get('admin/phan-quyen', [RoleController::class,'index'])->name('roles.show');
+Route::get('admin/phan-quyen/them-nv', [RoleController::class,'addview'])->name('roles.addview');
+Route::post('admin/phan-quyen/them-nv', [RoleController::class,'addhandle'])->name('roles.addstaff');
+Route::get('admin/phan-quyen/xoa-nv/{id}', [RoleController::class,'delstaff'])->name('del_staff');
+Route::get('admin/phan-quyen/sua-nv/{id}', [RoleController::class,'edit'])->name('edithandle');
+Route::post('admin/phan-quyen/sua-nv/{id}', [RoleController::class,'update'])->name('staff.edithandle');
