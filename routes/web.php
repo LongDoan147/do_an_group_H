@@ -19,6 +19,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MaterialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -208,4 +209,13 @@ Route::get('admin/phan-quyen/sua-nv/{id}', [RoleController::class,'edit'])->name
 Route::post('admin/phan-quyen/sua-nv/{id}', [RoleController::class,'update'])->name('staff.edithandle');
 
 
-
+// nguyen lieu
+Route::get('/admin/nguyen-lieu-ajax', [MaterialController::class,'showMalAjax']);
+Route::get('admin/nguyen-lieu', [MaterialController::class,'show'])->name('showMaterial');
+Route::get('admin/sua-nguyen-lieu/{slug}', [MaterialController::class,'edit'])->name('material.editview');
+Route::post('admin/sua-nguyen-lieu/{id}', [MaterialController::class,'update'])->name('material.edithandle');
+Route::get('admin/them-nguyen-lieu', [MaterialController::class,'add'])->name('material.addview');
+Route::post('admin/them-nguyen-lieu', [MaterialController::class,'create'])->name('material.addhandle');
+Route::get('admin/xoa-nguyen-lieu/{id}', [MaterialController::class,'delMaterial'])->name('material.delete');
+Route::post('admin/tim-kiem/', [MaterialController::class,'searchMaterial'])->name('material.search');
+ 

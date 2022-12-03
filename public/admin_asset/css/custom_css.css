@@ -245,7 +245,6 @@ label {
 }
 
 .add-material {
-    display: flex;
     justify-content: space-around;
 }
 table {

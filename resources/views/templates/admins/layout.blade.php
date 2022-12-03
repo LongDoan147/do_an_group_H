@@ -52,7 +52,7 @@
                         Sản phẩm
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="">
+                        <a class="sidebar-link" href="{{ route('showMaterial') }}">
                             <i class="align-middle" data-feather="user"></i>
                             <span class="align-middle">Nguyên liệu</span>
                         </a>
