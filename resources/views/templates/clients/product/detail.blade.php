@@ -99,6 +99,11 @@
                                     <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
                                         aria-controls="reviews" aria-selected="false" aria-expanded="false">Đánh giá</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="reviews-faceboook-tab" data-toggle="tab"
+                                        href="#reviews-faceboook" role="tab" aria-controls="reviews-faceboook"
+                                        aria-selected="false" aria-expanded="false">Bình luận</a>
+                                </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active show" id="description" role="tabpanel"
@@ -189,6 +194,14 @@
                                         @endif
                                     </div>
 
+                                </div>
+                                <div class="tab-pane fade " id="reviews-faceboook" role="tabpanel"
+                                    aria-labelledby="reviews-faceboook" aria-expanded="true">
+                                    <p>
+                                    <div class="fb-comments" data-href="{{$meta['url']}}" data-width=""
+                                        data-numposts="5">
+                                    </div>
+                                    </p>
                                 </div>
 
                             </div>
